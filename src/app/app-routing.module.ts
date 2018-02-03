@@ -1,11 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
+import { TimesheetListComponent } from './timesheet-list/timesheet-list.component';
+import { TimesheetComponent } from './timesheet/timesheet.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LandingComponent
+  },
+  {
+    path: 'list',
+    component: TimesheetListComponent
+  },
+  {
+    path: 'sheet',
+    component: TimesheetComponent
   },
   {
     path: 'login',

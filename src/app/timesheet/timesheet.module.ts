@@ -6,6 +6,11 @@ import { TimesheetComponent } from './timesheet.component';
   imports: [
     CommonModule
   ],
-  declarations: [TimesheetComponent]
+  exports: [
+    TimesheetComponent
+  ],
+  declarations: [
+    TimesheetComponent
+  ]
 })
 export class TimesheetModule { }

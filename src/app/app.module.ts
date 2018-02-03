@@ -6,13 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LandingModule } from './landing/landing.module';
+import { TimesheetModule } from './timesheet/timesheet.module';
+import { TimesheetListModule } from './timesheet-list/timesheet-list.module';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LandingModule
+    LandingModule,
+    TimesheetModule,
+    TimesheetListModule
   ],
   declarations: [
     AppComponent
