@@ -1,6 +1,14 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row fxLayout="row">
     <span>
+      <button mat-icon-button
+        type="button"
+        (click)="sidenavToggle$.next(sidenavOpened)"
+        >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </span>
+    <span>
       Timesheet
     </span>
     <span fxFlex></span>
