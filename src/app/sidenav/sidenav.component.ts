@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { NavbarStoreService } from './navbar-store.service';
+import { NavService } from '../services/nav/nav.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,6 +11,7 @@ import { NavbarStoreService } from './navbar-store.service';
 export class SidenavComponent implements OnInit {
   public sidenavClose = new Subject<null>();
   constructor(
+    public navService: NavService,
     private navbarStore: NavbarStoreService
   ) { }
 
