@@ -1,0 +1,24 @@
+<div>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>
+        <button mat-icon-button
+          type="buttton"
+          (click)="sidenavClose.next(null)"
+          >
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <a routerLink="/" class="clickable" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon matListIcon>home</mat-icon>
+          <span matLine>Timesheets</span>
+        </a>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

@@ -9,16 +9,24 @@ import { LandingModule } from './landing/landing.module';
 import { TimesheetModule } from './timesheet/timesheet.module';
 import { TimesheetListModule } from './timesheet-list/timesheet-list.module';
 import { NavbarModule } from './navbar/navbar.module';
-
+import { SidenavModule } from './sidenav/sidenav.module';
+import { MatSidenavModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    // app modules
     LandingModule,
     TimesheetModule,
     TimesheetListModule,
-    NavbarModule
+    NavbarModule,
+    SidenavModule,
+
+    // angular modules
+    MatSidenavModule
   ],
   declarations: [
     AppComponent
