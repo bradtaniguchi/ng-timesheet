@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavbarStoreService } from './sidenav/navbar-store.service';
 import { MatSidenav } from '@angular/material';
+import { SidenavStoreService } from './sidenav/sidenav-store.service';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +11,16 @@ export class AppComponent implements OnInit {
   public sidenavOpened: boolean;
   @ViewChild('sidenav') sidenav: MatSidenav;
   constructor(
-    private navbarStore: NavbarStoreService
+    private sidenavStore: SidenavStoreService
   ) { }
 
   ngOnInit() {
     console.log('in app component');
-    this.navbarStore.searchShown
+    this.sidenavStore.sidenavShown
     .subscribe((state) => this.sidenavOpened = state);
 
     this.sidenav.openedChange
-    .do((state) => this.navbarStore.search(state))
+    .do((state) => this.sidenavStore.setSidenav(state))
     .subscribe((state) => this.sidenavOpened = state);
   }
 }

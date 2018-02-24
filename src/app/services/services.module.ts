@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavService } from './nav.service';
+import { NavService } from './nav/nav.service';
 
 @NgModule({
   imports: [
@@ -11,4 +11,4 @@ import { NavService } from './nav.service';
     NavService
   ]
 })
-export class NavModule { }
+export class ServicesModule { }

@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule, MatButtonModule, MatIconModule } from '@angular/material';
-
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { SearchBarStoreService } from './search-bar-store.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +18,11 @@ import { MatToolbarModule, MatButtonModule, MatIconModule } from '@angular/mater
     NavbarComponent
   ],
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    SearchbarComponent
+  ],
+  providers: [
+    SearchBarStoreService
   ]
 })
 export class NavbarModule { }
