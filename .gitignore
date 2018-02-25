@@ -44,3 +44,4 @@ Thumbs.db
 
 # ignore environment files
 /src/environments/*
+.env
