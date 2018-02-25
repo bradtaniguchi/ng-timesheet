@@ -14,12 +14,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServicesModule } from './services/services.module';
 import { GuardsModule } from './guards/guards.module';
 import { NavbarModule } from './navbar/navbar.module';
-
+// import { AngularFireModule } from 'angularfire2';
+// import { environment } from '../environments/environment';
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    // firebase, when ready
+    // AngularFireModule.initializeApp(environment.firebase),
+
     // app modules
     ServicesModule,
     GuardsModule,
