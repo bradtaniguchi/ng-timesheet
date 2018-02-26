@@ -43,7 +43,7 @@
       </a>
     </mat-list-item>
     <mat-list-item role="listitem"
-      [routerLink]="navService.list()" 
+      [routerLink]="navService.sheetList()" 
       (click)="sidenavClose.next(null)"
       class="clickable">
       <a fxLayout="row" 
@@ -57,5 +57,6 @@
         </span>
       </a>
     </mat-list-item>
+    <mat-divider></mat-divider>
   </mat-list>
 </div>

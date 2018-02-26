@@ -10,7 +10,10 @@ export class NavService {
     console.log('navService class created');
   }
 
-  public root() {
+  /**
+   * Shows the user the landing page
+   */
+  public root(): string {
     return `/`;
   }
 
@@ -18,17 +21,35 @@ export class NavService {
    * Shows the given sheet
    * @param id the id of the sheet to lookup
    */
-  public sheets(id: string) {
+  public sheet(id: string): string {
     return `/sheet${id}`;
   }
 
-  public sheet() {
+  /**
+   * Shows the timesheet form, but with no ID, thus we will create a new timesheet.
+   */
+  public newSheet() {
     return `/sheet`;
   }
   /**
-   * Shows all timesheets
+   * Shows all timesheets the user has access to
    */
-  public list() {
-    return `/list`;
+  public sheetList(): string {
+    return `/sheets`;
+  }
+  /**
+   * Shows the page of all the teams the user currently has access to (at the top)
+   * and allows the user to search for other teams.
+   */
+  public teamList(): string {
+    return `/teams`;
+  }
+
+  /**
+   * Shows the admin page of the given team. This page is shown only to users with
+   * admin access to the team.
+   */
+  public team(id: string): string {
+    return `/teams/${id}`;
   }
 }

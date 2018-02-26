@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run config:dev && ng serve --hmr",
+    "start": "npm run config:dev && ng serve --hmr --sourcemap=false",
     "build": "npm run config:prod && ng build --prod",
     "smoke": "node ./scripts/live-server-config.js",
     "test": "ng test",
