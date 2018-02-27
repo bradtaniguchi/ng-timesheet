@@ -15,6 +15,7 @@ import { ServicesModule } from './services/services.module';
 import { GuardsModule } from './guards/guards.module';
 import { NavbarModule } from './navbar/navbar.module';
 import { CreateFabModule } from './create-fab/create-fab.module';
+import { CurrentUserProfileModule } from './current-user-profile/current-user-profile.module';
 // import { AngularFireModule } from 'angularfire2';
 // import { environment } from '../environments/environment';
 @NgModule({
@@ -35,6 +36,7 @@ import { CreateFabModule } from './create-fab/create-fab.module';
     SidenavModule,
     NavbarModule,
     CreateFabModule,
+    CurrentUserProfileModule,
 
     // angular modules
     MatSidenavModule
