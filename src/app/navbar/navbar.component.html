@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <ng-container *ngIf="!showSearch; else elseSearch">
-    <mat-toolbar-row fxLayout="row">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="start center">
       <span>
         <button mat-icon-button
           type="button"
@@ -14,17 +14,20 @@
       </span>
       <span fxFlex></span>
       <span>
-        <button (click)="showSearch = !showSearch">
-          test
+        <button mat-icon-button 
+          aria-label="Search"
+          (click)="showSearch = true">
+          <mat-icon>search</mat-icon>
         </button>
       </span>
       <span>
-        user icon
+        <mat-icon>face</mat-icon>
       </span>
     </mat-toolbar-row>
   </ng-container>
   <ng-template #elseSearch>
-    <mat-toolbar-row fxLayout="row">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="start center">
+      <app-searchbar></app-searchbar>
     </mat-toolbar-row>
   </ng-template>
 </mat-toolbar>

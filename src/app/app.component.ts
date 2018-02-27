@@ -2,6 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { SidenavStoreService } from './sidenav/sidenav-store.service';
 
+
+// global rxjs observables
+import 'rxjs/add/operator/do';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
