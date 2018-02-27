@@ -10,11 +10,15 @@ const routes: Routes = [
     component: LandingComponent
   },
   {
-    path: 'list',
+    path: 'sheets',
     component: TimesheetListComponent
   },
   {
     path: 'sheet',
+    component: TimesheetComponent
+  },
+  {
+    path: 'sheet/:id',
     component: TimesheetComponent
   },
   {

@@ -22,20 +22,20 @@ export class NavService {
    * @param id the id of the sheet to lookup
    */
   public sheet(id: string): string {
-    return `/sheet${id}`;
+    return `sheet${id}`;
   }
 
   /**
    * Shows the timesheet form, but with no ID, thus we will create a new timesheet.
    */
   public newSheet() {
-    return `/sheet`;
+    return `sheet`;
   }
   /**
    * Shows all timesheets the user has access to
    */
   public sheetList(): string {
-    return `/sheets`;
+    return `sheets`;
   }
   /**
    * Shows the page of all the teams the user currently has access to (at the top)
