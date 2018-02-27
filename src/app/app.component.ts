@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('in app component');
     this.sidenavStore.sidenavShown
     .subscribe((state) => this.sidenavOpened = state);
 

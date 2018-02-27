@@ -1,6 +1,8 @@
-<a class="current-user-profile"
-  role="button"
-  (click)="click.emit()"
-  [title]="">
-  TEMP
-</a>
+<ng-container *ngIf="user | async">
+  <a class="current-user-profile"
+    role="button"
+    (click)="click.emit()"
+    [title]="">
+    <img class="user-avatar" src="{{(user | async)?.photoURL}}">
+  </a>
+</ng-container>

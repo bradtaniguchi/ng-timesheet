@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material';
   imports: [
     CommonModule
   ],
-  declarations: [CurrentUserProfileComponent]
+  declarations: [CurrentUserProfileComponent],
+  exports: [CurrentUserProfileComponent]
 })
 export class CurrentUserProfileModule { }

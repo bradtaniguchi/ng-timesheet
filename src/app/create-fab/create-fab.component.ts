@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { CreateFabService } from './create-fab.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-fab',
@@ -8,14 +9,16 @@ import { CreateFabService } from './create-fab.service';
   styles: []
 })
 export class CreateFabComponent implements OnInit, OnDestroy {
-  click = new Subject();
+  @Output() click = new EventEmitter();
   private takeUntil = new Subject();
   constructor(
     private createFabService: CreateFabService
   ) { }
 
   ngOnInit() {
-    this.click.subscribe(() => this.createFabService.emitClick());
+    this.click
+    .pipe(takeUntil(this.takeUntil))
+    .subscribe(() => this.createFabService.emitClick());
   }
   ngOnDestroy() {
     this.takeUntil.next();
