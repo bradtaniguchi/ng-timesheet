@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServicesModule } from './services/services.module';
 import { GuardsModule } from './guards/guards.module';
 import { NavbarModule } from './navbar/navbar.module';
+import { CreateFabModule } from './create-fab/create-fab.module';
 // import { AngularFireModule } from 'angularfire2';
 // import { environment } from '../environments/environment';
 @NgModule({
@@ -33,6 +34,7 @@ import { NavbarModule } from './navbar/navbar.module';
     TimesheetListModule,
     SidenavModule,
     NavbarModule,
+    CreateFabModule,
 
     // angular modules
     MatSidenavModule
