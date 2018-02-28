@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CurrentUserProfileComponent } from './current-user-profile.component';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatTooltipModule } from '@angular/material';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatTooltipModule
   ],
   declarations: [CurrentUserProfileComponent],
   exports: [CurrentUserProfileComponent]

@@ -1,5 +1,6 @@
 <ng-container *ngIf="user | async">
   <a class="current-user-profile"
+    matTooltip="{{(user | async)?.displayName}}"
     role="button"
     (click)="click.emit()"
     [title]="">
