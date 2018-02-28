@@ -1,4 +1,5 @@
 export interface Timesheet {
+  id: string;
   createdBy: string;
   date: Date;
   startTime: any; // TODO: add type interface for time

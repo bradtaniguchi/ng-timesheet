@@ -4,6 +4,7 @@ import { NavService } from './nav/nav.service';
 import { AuthService } from './auth/auth.service';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { TimesheetService } from './timesheet/timesheet.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +17,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
   providers: [
     NavService,
     AuthService,
+    TimesheetService
   ]
 })
 export class ServicesModule { }
