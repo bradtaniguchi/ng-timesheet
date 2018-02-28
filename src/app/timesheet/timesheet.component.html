@@ -1,3 +1,104 @@
-<p>
-  timesheet works!
-</p>
+<div fxLayout="row" 
+  fxLayout="center center"
+  fxFlexOffset.md="20"
+  fxFlexOffset.lg="20"
+  fxFlexOffset.xl="30"
+  fxFlex>
+  <form #form="ngForm" 
+    fxFlex.xs="100"
+    fxFlex.sm="100" 
+    fxFlex.md="80"
+    fxFlex.lg="80"
+    fxFlex.xl="60"
+    >
+    <pre>
+      {{timesheet | json}}
+    </pre>
+    <mat-card class="all-around-margin">
+      <mat-card-title>
+        <ng-container *ngIf="edit; else elseCreateTitle">
+          Edit
+        </ng-container>
+        <ng-template #elseCreateTitle>
+          Create
+        </ng-template>
+        Timesheet
+      </mat-card-title>
+      <mat-card-subtitle>
+        <ng-container *ngIf="edit; else elseCreateSubtitle">
+          Update this timesheet
+        </ng-container>
+        <ng-template #elseCreateSubtitle>
+          Create a new timesheet
+        </ng-template>
+      </mat-card-subtitle>
+      <mat-card-content fxLayout="row" 
+        fxLayoutWrap
+        fxLayoutGap="16px">
+        <!-- put the user's information here-->
+        <span fxFlex="100">
+
+        </span>
+        <mat-form-field fxFlex="100">
+          <mat-placeholder>Date</mat-placeholder>
+          <input matInput
+            name="date"
+            #date="ngModel"
+            type="date"
+            [(ngModel)]="timesheet.date"
+            >
+        </mat-form-field>
+        <mat-form-field fxFlex="calc(50% - 16px)">
+          <mat-placeholder>Start Time</mat-placeholder>
+          <input matInput
+            name="startTime"
+            #startTime="ngModel"
+            type="time"
+            [(ngModel)]="timesheet.startTime"
+            >
+        </mat-form-field>
+        <mat-form-field fxFlex="calc(50% - 16px)">
+          <mat-placeholder>End Time</mat-placeholder>
+          <input matInput
+            name="endTime"
+            #endTime="ngModel"
+            type="time"
+            [(ngModel)]="timesheet.endTime"
+            >
+        </mat-form-field>
+        <mat-form-field fxFlex="calc(50% - 16px)">
+          <mat-placeholder>Break Time</mat-placeholder>
+          <input matInput
+            name="breakTime"
+            #breakTime="ngModel"
+            type="number"
+            [(ngModel)]="timesheet.breakTime"
+            >
+        </mat-form-field>
+        <mat-form-field fxFlex="calc(50% - 16px)">
+          <mat-placeholder>Work Type</mat-placeholder>
+          <mat-select matInput
+            name="workType"
+            #workType="ngModel"
+            [(ngModel)]="timesheet.workType"
+            >
+            <mat-option value="one">
+              One
+            </mat-option>
+            <mat-option value="two">
+              Two
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button (click)="cancel()" mat-button>
+          Cancel
+        </button>
+        <button type="submit" mat-button color="primary">
+          Submit
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

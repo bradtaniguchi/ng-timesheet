@@ -1,0 +1,12 @@
+.all-around-margin {
+  margin: 16px;
+  .sm {
+    margin: 8px;
+  }
+  .md {
+    margin: 16px;
+  }
+  .lg {
+    margin: 32px;
+  }
+}
