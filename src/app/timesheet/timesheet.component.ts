@@ -34,7 +34,8 @@ export class TimesheetComponent implements OnInit, OnDestroy {
     this.user$ = this.authService.user
       .do((user) => console.log('test with user', user));
     // for not timesheet will always be "new"
-    this.timesheet = <any>{};
+    // TODO: migrate to timesheet service
+    this.timesheet = this.timesheetService.getDefault();
   }
   ngOnDestroy() {
     this.takeUntil.next();
@@ -52,8 +53,8 @@ export class TimesheetComponent implements OnInit, OnDestroy {
     this.timesheetService.create(this.form.value)
     .pipe(take(1))
     .pipe(takeUntil(this.takeUntil))
-    .subscribe((doc: DocumentReference) => {
-      console.log('returned document: ', doc);
+    .subscribe(() => {
+      console.log('updated successfully');
     }, (err) => {
       console.error(err);
     });

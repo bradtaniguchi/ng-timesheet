@@ -12,6 +12,9 @@
     fxFlex.lg="80"
     fxFlex.xl="60"
     >
+    <pre>
+      {{this.form.value | json}}
+    </pre>
     <mat-card class="all-around-margin">
       <mat-card-title>
         <ng-container *ngIf="edit; else elseCreateTitle">
@@ -48,7 +51,7 @@
             name="date"
             #date="ngModel"
             type="date"
-            [(ngModel)]="timesheet.date"
+            [ngModel]="timesheet.date"
             >
         </mat-form-field>
         <mat-form-field fxFlex="calc(25% - 16px)">
@@ -58,7 +61,7 @@
             name="startTime"
             #startTime="ngModel"
             type="time"
-            [(ngModel)]="timesheet.startTime"
+            [ngModel]="timesheet.startTime"
             >
         </mat-form-field>
         <mat-form-field fxFlex="calc(25% - 16px)">
@@ -68,7 +71,7 @@
             name="endTime"
             #endTime="ngModel"
             type="time"
-            [(ngModel)]="timesheet.endTime"
+            [ngModel]="timesheet.endTime"
             >
         </mat-form-field>
         <mat-form-field fxFlex="calc(25% - 16px)">
@@ -78,7 +81,7 @@
             name="breakTime"
             #breakTime="ngModel"
             type="number"
-            [(ngModel)]="timesheet.breakTime"
+            [ngModel]="timesheet.breakTime"
             >
         </mat-form-field>
         <span fxFlex="calc(25%-16px)">
@@ -90,7 +93,7 @@
           <mat-select matInput
             name="workType"
             #workType="ngModel"
-            [(ngModel)]="timesheet.workType"
+            [ngModel]="timesheet.workType"
             >
             <mat-option></mat-option>
             <mat-option value="one">
@@ -108,7 +111,7 @@
           <mat-select matInput
             name="team"
             #team="ngModel"
-            [(ngModel)]="timesheet.team"
+            [ngModel]="timesheet.team"
             >
             <mat-option></mat-option>
             <mat-option value="one">
@@ -125,7 +128,7 @@
           <mat-select matInput
             name="project"
             #project="ngModel"
-            [(ngModel)]="timesheet.project"
+            [ngModel]="timesheet.project"
             >
             <mat-option></mat-option>
             <mat-option value="one">
@@ -142,7 +145,7 @@
           <textarea matInput
             name="description"
             #description="ngModel"
-            [(ngModel)]="timesheet.description"
+            [ngModel]="timesheet.description"
             >
           </textarea>
         </mat-form-field>

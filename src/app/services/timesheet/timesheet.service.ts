@@ -17,7 +17,21 @@ export class TimesheetService {
   ) {
     this.timesheetCollection = this.fireDb.collection<Timesheet>('timesheets');
   }
-
+  /** 
+   * Gets the default timesheet we can use for the input fields.
+  */
+  getDefault(): Timesheet {
+    return {
+      date: new Date(),
+      startTime: new Date().getTime(),
+      endTime: new Date().getTime(),
+      breakTime: 1,
+      workType: '',
+      team: '',
+      project: '',
+      description: ''
+    };
+  }
   /**
    * Gets the timesheets for the given user
    * @param user The user to get the timesheets for
@@ -40,12 +54,14 @@ export class TimesheetService {
    * @param user the user we want to add the sheet for
    * TODO: add the project information argument.
    */
-  create(sheet: Timesheet): Observable<DocumentReference> {
+  create(sheet: Timesheet): Observable<void> {
     return this.authService.user
     .switchMap((user) => {
       sheet.id = this.fireDb.createId();
       sheet.createdBy = user.uid;
-      return this.timesheetCollection.add(sheet);
+      return this.timesheetCollection.doc(sheet.id).set(sheet, {
+        merge: true
+      });
     });
   }
 
