@@ -53,21 +53,21 @@ export class TimesheetService {
    * Updates the given sheet in the firestore database
    * @param sheet the sheet to update
    */
-  update(sheet: Timesheet): Observable<void | Error> {
+  update(sheet: Timesheet): Observable<void> {
     if (sheet.id) {
       return Observable.fromPromise(this.timesheetCollection.doc(sheet.id).update(sheet));
     }
-    return Observable.of(new Error(this.noIdMessage));
+    return Observable.throw(new Error(this.noIdMessage));
   }
 
   /**
    * Removes the given sheet in the firestore database.
    * @param sheet the sheet to remove
    */
-  remove(sheet: Timesheet): Observable<void | Error> {
+  remove(sheet: Timesheet): Observable<void> {
     if (sheet.id) {
       return Observable.fromPromise(this.timesheetCollection.doc(sheet.id).delete());
     }
-    return Observable.of(new Error(this.noIdMessage));
+    return Observable.throw(new Error(this.noIdMessage));
   }
 }
