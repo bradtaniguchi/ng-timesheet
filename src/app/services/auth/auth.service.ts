@@ -21,11 +21,14 @@ export class AuthService {
       } else {
         return Observable.of(null);
       }
-    });
+    }).do((user) => console.log('>>> auth:', user));
   }
 
   get user(): Observable<User> {
-    return this.currentUser;
+    return this.currentUser.share();
+  }
+  getUser(): Observable<User> {
+    return this.currentUser.share();
   }
   /**
    * Opens the sign in with popup dialog
