@@ -1,0 +1,38 @@
+version: 2
+machine:
+  node: 
+    version: 8.5.0
+jobs:
+  build:
+    docker:
+      - 
+    working_directory: ~/ng-timesheet
+    docker:
+      - image: circleci/node:8-browsers
+    branches:
+      only:
+        - master
+        - /test-.*/
+        - /ci-.*/
+    steps:
+      - checkout
+      - run:
+          name: install-dependencies
+          command: npm install
+      - save_cache:
+          key: npm-deps-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: angular-test
+          command: npm run test:ci
+# deployment:
+#   production: 
+#     branch: master
+#     commands: 
+#       - npm run build:ci
+#       - npm run deploy
+#   staging: 
+#     branch: staging
+#     commands: 
+#       - npm run deploy:staging

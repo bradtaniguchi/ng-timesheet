@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchbarComponent } from './searchbar.component';
+import { SearchBarStoreService } from '../search-bar-store.service';
+import { SearchBarStoreServiceStub } from '../../../tests/stubs/search-bar-store-service.stub';
+import { MatIconModule, MatButtonModule } from '@angular/material';
 
 describe('SearchbarComponent', () => {
   let component: SearchbarComponent;
@@ -8,7 +11,14 @@ describe('SearchbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchbarComponent ]
+      declarations: [ SearchbarComponent ],
+      imports: [
+        MatIconModule,
+        MatButtonModule
+      ],
+      providers: [
+        { provide: SearchBarStoreService, useClass: SearchBarStoreServiceStub }
+      ]
     })
     .compileComponents();
   }));

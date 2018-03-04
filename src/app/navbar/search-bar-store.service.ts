@@ -3,7 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 /**
  * The SearchbarStoreService handles the state for the searchbar.
- * 
+ *
  * @export
  * @class SearchbarStoreService
  */

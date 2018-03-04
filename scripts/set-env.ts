@@ -18,9 +18,9 @@ export const environment = {
   production: ${isProd},
   hmr: ${hmr},
   firebase: {
-    apiKey: "${process.env.FIREBASE_API_KEY}",
-    projectId: "${process.env.FIREBASE_PROJECT_ID}",
-    authDomain: "${process.env.FIREBASE_AUTH_DOMAIN}"
+    apiKey: '${process.env.FIREBASE_API_KEY}',
+    projectId: '${process.env.FIREBASE_PROJECT_ID}',
+    authDomain: '${process.env.FIREBASE_AUTH_DOMAIN}'
   }
 };
 `;

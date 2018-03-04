@@ -17,7 +17,7 @@ export class TimesheetService {
   ) {
     this.timesheetCollection = this.fireDb.collection<Timesheet>('timesheets');
   }
-  /** 
+  /**
    * Gets the default timesheet we can use for the input fields.
   */
   getDefault(): Timesheet {

@@ -46,3 +46,6 @@ Thumbs.db
 # ignore environment files
 /src/environments/*
 .env
+
+# ignore some function settings
+/functions/node_modules
