@@ -1,10 +1,17 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Injectable, Inject } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import { User } from '../../interfaces/user';
 import { Observable } from 'rxjs/Observable';
 import { Timesheet } from '../../interfaces/timesheet';
-import { DocumentReference } from '@firebase/firestore-types';
+import { DocumentReference, CollectionReference, Query } from '@firebase/firestore-types';
 import { AuthService } from '../auth/auth.service';
+import { toCommonDate } from '../../common/to-common-date';
+import { getTimeFromDate } from '../../common/get-time-from-date';
+import { SearchParams } from '../../interfaces/search-params';
+import { QueryConfig } from '../../interfaces/query-config';
+import { DEFAULT_QUERY_CONFIG } from '../../constants/default-query-config';
+
+
 
 @Injectable()
 export class TimesheetService {
@@ -12,19 +19,38 @@ export class TimesheetService {
   private timesheets: Observable<Array<Timesheet>>;
   private noIdMessage = 'No Sheet id provided';
   constructor(
+    @Inject(DEFAULT_QUERY_CONFIG) private defaultQueryConfig: QueryConfig,
+    // TODO: add config for default timesheet
     private fireDb: AngularFirestore,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     this.timesheetCollection = this.fireDb.collection<Timesheet>('timesheets');
+  }
+
+  private getTimeFromDate(date: Date): string {
+    return getTimeFromDate(date);
+  }
+  /**
+   * The buildQuery function builds the query based on the user's information
+   * and passed configurations based on the searchParams passed to the get function.
+   * @param queryConfig the query we will make, this should be build from some of
+   * the searchParams and the user's information.
+   */
+  private buildQuery(queryConfig: QueryConfig): Query {
+    // only get our timesheets
+    return queryConfig.ref.where('createdBy.uid', '==', queryConfig.user.uid)
+    .orderBy(queryConfig.orderBy || 'id') // TODO: set more sane defaults
+    .startAfter(queryConfig.startAfter || 1)
+    .limit(queryConfig.limit || 15);
   }
   /**
    * Gets the default timesheet we can use for the input fields.
   */
   getDefault(): Timesheet {
     return {
-      date: new Date(),
-      startTime: new Date().getTime(),
-      endTime: new Date().getTime(),
+      date: toCommonDate(new Date()),
+      startTime: this.getTimeFromDate(new Date()),
+      endTime: this.getTimeFromDate(new Date()),
       breakTime: 1,
       workType: '',
       team: '',
@@ -38,11 +64,17 @@ export class TimesheetService {
    * TODO: use the user information to get the timesheets the user creates. We can update
    * this to also take in arguments for the user's roles
    */
-  get(): Observable<Array<Timesheet>> {
+  get(searchParams: SearchParams): Observable<Array<Timesheet>> {
     if (!this.timesheets) {
       this.timesheets = this.authService.user
         .switchMap((user) => {
-          return this.timesheetCollection.valueChanges();
+          return this.fireDb.collection<Timesheet>('timesheets', ref => this.buildQuery({
+            ref,
+            user,
+            orderBy: searchParams.orderBy || this.defaultQueryConfig.orderBy,
+            startAfter: searchParams.startAfter || this.defaultQueryConfig.startAfter,
+            limit: searchParams.limit || this.defaultQueryConfig.limit,
+          })).valueChanges();
         });
     }
     return this.timesheets.share();
@@ -58,7 +90,11 @@ export class TimesheetService {
     return this.authService.user
     .switchMap((user) => {
       sheet.id = this.fireDb.createId();
-      sheet.createdBy = user.uid;
+      sheet.createdBy = {
+        name: user.displayName,
+        email: user.email,
+        uid: user.uid
+      };
       return this.timesheetCollection.doc(sheet.id).set(sheet, {
         merge: true
       });

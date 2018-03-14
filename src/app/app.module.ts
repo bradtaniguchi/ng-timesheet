@@ -18,9 +18,15 @@ import { CreateFabModule } from './create-fab/create-fab.module';
 import { CurrentUserProfileModule } from './current-user-profile/current-user-profile.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
+import { ConstantsModule } from './constants/constants.module';
 
 // rxjs prototypes
 import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/forkJoin';
+import { DefaultQueryConfig, DEFAULT_QUERY_CONFIG } from './constants/default-query-config';
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -30,7 +36,8 @@ import 'rxjs/add/operator/do';
     AngularFireModule.initializeApp(environment.firebase),
 
     // app modules
-    ServicesModule,
+    ServicesModule.forRoot(),
+    ConstantsModule,
     GuardsModule,
 
     LandingModule,
@@ -47,7 +54,12 @@ import 'rxjs/add/operator/do';
   declarations: [
     AppComponent
   ],
-  providers: [],
+  providers: [
+    {
+      provide: DEFAULT_QUERY_CONFIG,
+      useValue: DefaultQueryConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

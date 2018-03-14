@@ -1,6 +1,4 @@
-<div>
-  All timesheets are below
-</div>
-<pre>
-  {{timesheets | async | json}}
-</pre>
+<app-timesheet-table
+  [selection]="selection"
+  (select)="onSelectionChange($event)">
+</app-timesheet-table>

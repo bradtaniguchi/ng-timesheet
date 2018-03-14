@@ -31,4 +31,13 @@ describe('CreateFabComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('clicking should emit click', () => {
+    const button = fixture.debugElement.nativeElement.querySelector('button');
+    const service = fixture.debugElement.injector.get(CreateFabService);
+    spyOn(service, 'emitClick');
+    button.click();
+
+    expect(service.emitClick).toHaveBeenCalled();
+  });
 });

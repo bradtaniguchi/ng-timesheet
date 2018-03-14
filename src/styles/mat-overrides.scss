@@ -5,3 +5,11 @@ mat-sidenav-container,
 mat-sidenav-content {
   height: 100%
 }
+
+mat-card.no-padding {
+  padding: 0;
+}
+
+mat-card-actions.fix-card-actions.mat-card-actions {
+  margin-bottom: 32px !important;  // I'm sorry for using important!
+}

@@ -1,9 +1,13 @@
+import { PersonTag } from './person-tag';
+/**
+ * Timesheet represents the timesheet object.
+ */
 export interface Timesheet {
   id?: string;
-  createdBy?: string;
-  date: Date;
-  startTime: any; // TODO: add type interface for time
-  endTime: any; // TODO: add type interface for time
+  createdBy?: PersonTag;
+  date: string;
+  startTime: string | number;
+  endTime: string | number;
   breakTime: any; // TODO: add type interface for time
   workType: string;
   project?: string;

@@ -12,4 +12,10 @@ export class TimeSheetServiceStub {
   get(): Observable<Array<Timesheet>> {
     return Observable.of([]);
   }
+  create() {
+    return Observable.of();
+  }
+  update() {
+    return Observable.of();
+  }
 }

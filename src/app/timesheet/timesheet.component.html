@@ -12,9 +12,9 @@
     fxFlex.lg="80"
     fxFlex.xl="60"
     >
-    <pre>
+    <!-- <pre>
       {{this.form.value | json}}
-    </pre>
+    </pre> -->
     <mat-card class="all-around-margin">
       <mat-card-title>
         <ng-container *ngIf="edit; else elseCreateTitle">
@@ -42,10 +42,10 @@
 
         </span>
         <span fxFlex="calc(50% - 16px)" class="mat-body-2">
-          {{(user$ | async)?.displayName }}
+          Current User: {{(user$ | async)?.displayName }}
         </span>
         <mat-form-field fxFlex="calc(50% - 16px)">
-          <mat-icon matPrefix>view_week</mat-icon>
+          <mat-icon matPrefix (click)="getTodaysDate()" class="clickable">view_week</mat-icon>
           <mat-placeholder>Date</mat-placeholder>
           <input matInput
             name="date"
@@ -153,7 +153,7 @@
 
         </div>
       </mat-card-content>
-      <mat-card-actions align="end">
+      <mat-card-actions align="end" class="fix-card-actions">
         <button (click)="cancel()" mat-button>
           Cancel
         </button>

@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { AuthService } from '../services/auth/auth.service';
 import { User } from '../interfaces/user';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-timesheet-list',
@@ -14,17 +15,20 @@ import { User } from '../interfaces/user';
 })
 export class TimesheetListComponent implements OnInit, OnDestroy {
   timesheets: Observable<Array<Timesheet>>;
+  selection = new SelectionModel(true, []);
   private takeUntil = new Subject();
   constructor(
-    private timesheetService: TimesheetService
   ) { }
 
   ngOnInit() {
-    this.timesheets = this.timesheetService.get();
   }
 
   ngOnDestroy() {
     this.takeUntil.next();
     this.takeUntil.unsubscribe();
+  }
+
+  onSelectionChange(timesheet: Timesheet) {
+    this.selection.toggle(timesheet);
   }
 }
