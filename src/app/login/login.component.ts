@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.authService.authLoginPopup()
+    // this.authService.authLoginRedirect()
     .then(() => {
       this.router.navigateByUrl(this.navService.root());
     }).catch((err) => {

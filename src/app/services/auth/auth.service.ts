@@ -21,7 +21,8 @@ export class AuthService {
       } else {
         return Observable.of(null);
       }
-    }).do((user) => console.log('>>> auth:', user));
+    });
+    // .do((user) => console.log('>>> auth:', user));
   }
 
   get user(): Observable<User> {
@@ -38,6 +39,15 @@ export class AuthService {
     return this.fireAuth.auth.signInWithPopup(provider)
     .then((cred) => {
       console.log('authLoginPopup: ', cred);
+      return this.updateUserData(cred.user);
+    });
+  }
+
+  authLoginRedirect(): Promise<any> {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return this.fireAuth.auth.signInWithRedirect(provider)
+    .then((cred) => {
+      console.log('redirect cred?: ', cred);
       return this.updateUserData(cred.user);
     });
   }
