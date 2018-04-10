@@ -5,6 +5,8 @@ import { PersonTag } from './person-tag';
 export interface Timesheet {
   id?: string;
   createdBy?: PersonTag;
+  createdOn?: number; // date timestamp
+  updatedOn?: number; // date timestamp
   date: string;
   startTime: string | number;
   endTime: string | number;

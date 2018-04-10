@@ -13,3 +13,8 @@ mat-card.no-padding {
 mat-card-actions.fix-card-actions.mat-card-actions {
   margin-bottom: 32px !important;  // I'm sorry for using important!
 }
+
+mat-card-actions.mat-card-actions.normal-margin {
+  margin: 0px;
+  padding: 0;
+}

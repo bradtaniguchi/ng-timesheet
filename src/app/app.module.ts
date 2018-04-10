@@ -24,6 +24,7 @@ import { ConstantsModule } from './constants/constants.module';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/merge';
 import { DefaultQueryConfig, DEFAULT_QUERY_CONFIG } from './constants/default-query-config';
 
 

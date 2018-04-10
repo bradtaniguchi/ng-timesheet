@@ -64,10 +64,11 @@ export class TimesheetService {
    * TODO: use the user information to get the timesheets the user creates. We can update
    * this to also take in arguments for the user's roles
    */
-  get(searchParams: SearchParams): Observable<Array<Timesheet>> {
-    if (!this.timesheets) {
+  get(searchParams: SearchParams, update?: boolean): Observable<Array<Timesheet>> {
+    if (!this.timesheets || update) {
       this.timesheets = this.authService.user
         .switchMap((user) => {
+          console.log('test in switchMap: ', searchParams);
           return this.fireDb.collection<Timesheet>('timesheets', ref => this.buildQuery({
             ref,
             user,
@@ -77,7 +78,7 @@ export class TimesheetService {
           })).valueChanges();
         });
     }
-    return this.timesheets.share();
+    return this.timesheets;
   }
 
   /**
@@ -95,6 +96,8 @@ export class TimesheetService {
         email: user.email,
         uid: user.uid
       };
+      sheet.updatedOn = new Date().getTime();
+      sheet.createdOn = new Date().getTime();
       return this.timesheetCollection.doc(sheet.id).set(sheet, {
         merge: true
       });
@@ -107,6 +110,7 @@ export class TimesheetService {
    */
   update(sheet: Timesheet): Observable<void> {
     if (sheet.id) {
+      sheet.updatedOn = new Date().getTime();
       return Observable.fromPromise(this.timesheetCollection.doc(sheet.id).update(sheet));
     }
     return Observable.throw(new Error(this.noIdMessage));

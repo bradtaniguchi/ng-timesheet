@@ -4,4 +4,5 @@ export interface SearchParams {
   orderBy?: string;
   limit?: number;
   startAfter?: number;
+  endAt?: number;
 }

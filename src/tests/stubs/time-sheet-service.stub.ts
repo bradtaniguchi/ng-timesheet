@@ -13,9 +13,12 @@ export class TimeSheetServiceStub {
     return Observable.of([]);
   }
   create() {
-    return Observable.of();
+    return Observable.of({});
   }
   update() {
-    return Observable.of();
+    return Observable.of({});
+  }
+  remove() {
+    return Observable.of({});
   }
 }

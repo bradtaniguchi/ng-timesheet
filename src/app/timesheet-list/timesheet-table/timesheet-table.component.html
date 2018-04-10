@@ -1,4 +1,5 @@
 <div fxLayout="row"
+  class="full-height scrolling"
   fxLayout="center center"
   fxFlexOffset.md="20"
   fxFlexOffset.lg="20"
@@ -9,14 +10,15 @@
     fxFlex.sm="100" 
     fxFlex.md="80"
     fxFlex.lg="80"
-    fxFlex.xl="60">
+    fxFlex.xl="60"
+    style="margin-bottom: 64px">
     <mat-card fxFlex="100" class="no-padding all-around-margin"> <!-- class="all-around-margin no-padding" -->
       <mat-table
         [dataSource]="dataSource">
         <ng-container *ngFor="let col of displayColumns; trackBy: index" [cdkColumnDef]=col>
           <mat-header-cell  *matHeaderCellDef> {{ col }}</mat-header-cell>
           <mat-cell *matCellDef="let timesheet">  
-            <ng-container *ngIf="timesheet[col]"> {{timesheet[col] | json}} </ng-container>
+            <ng-container *ngIf="timesheet[col]"> {{getDisplayValue(timesheet, col)}} </ng-container>
           </mat-cell>
         </ng-container>
 
@@ -27,6 +29,21 @@
         }"
         (click)="select.next(timesheet)"></mat-row>
       </mat-table>
+
+      <mat-card-actions class="normal-margin" align="end">
+        <button mat-button (click)="edit(selection)"
+          *ngIf="selection.selected.length === 1" 
+          type="button" 
+          color="primary">
+          Edit
+        </button>
+        <button mat-button (click)="remove(selection)"
+          *ngIf="selection.selected.length === 1" 
+          type="button" 
+          color="primary">
+          Edit
+        </button>
+      </mat-card-actions>
     </mat-card>
   </div>
 </div>

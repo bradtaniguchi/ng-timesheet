@@ -5,10 +5,13 @@ import {
   MatCardModule,
   MatTableModule,
   MatPaginatorModule,
-  MatSortModule
+  MatSortModule,
+  MatIconModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { DisplayColumnService } from './display-column/display-column.service';
+import { PaginationService } from './pagination/pagination.service';
+import { MatButtonModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -17,12 +20,15 @@ import { DisplayColumnService } from './display-column/display-column.service';
     MatTableModule,
     CdkTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [TimesheetTableComponent],
   declarations: [TimesheetTableComponent],
   providers: [
-    DisplayColumnService
+    DisplayColumnService,
+    PaginationService
   ]
 })
 export class TimesheetTableModule { }
