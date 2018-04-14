@@ -15,7 +15,7 @@
     <mat-card fxFlex="100" class="no-padding all-around-margin"> <!-- class="all-around-margin no-padding" -->
       <mat-table
         [dataSource]="dataSource">
-        <ng-container *ngFor="let col of displayColumns; trackBy: index" [cdkColumnDef]=col>
+        <ng-container *ngFor="let col of displayColumns;" [cdkColumnDef]= "col">
           <mat-header-cell  *matHeaderCellDef> {{ col }}</mat-header-cell>
           <mat-cell *matCellDef="let timesheet">  
             <ng-container *ngIf="timesheet[col]"> {{getDisplayValue(timesheet, col)}} </ng-container>

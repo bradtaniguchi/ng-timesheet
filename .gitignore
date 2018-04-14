@@ -49,3 +49,6 @@ Thumbs.db
 
 # ignore some function settings
 /functions/node_modules
+
+# lighthouse reports
+lighthouse-report.*

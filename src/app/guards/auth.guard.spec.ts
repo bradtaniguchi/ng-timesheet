@@ -6,7 +6,7 @@ import { AuthServiceStub } from '../../tests/stubs/auth-service.stub';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CanActivate } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { MockComponent } from './mock-component.component';
+import { MockComponent } from './mock-component.mock.component';
 describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({

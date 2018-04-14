@@ -19,7 +19,7 @@ import { CurrentUserProfileModule } from './current-user-profile/current-user-pr
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { ConstantsModule } from './constants/constants.module';
-
+import { ServiceWorkerModule } from '@angular/service-worker';
 // rxjs prototypes
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/of';
@@ -33,6 +33,9 @@ import { DefaultQueryConfig, DEFAULT_QUERY_CONFIG } from './constants/default-qu
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+
+    // service worker
+    ServiceWorkerModule.register('ngsw-config.json', {enabled: environment.production}),
     // firebase, when ready
     AngularFireModule.initializeApp(environment.firebase),
 
