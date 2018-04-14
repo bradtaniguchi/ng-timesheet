@@ -2,10 +2,7 @@
   <ng-container *ngIf="!showSearch; else elseSearch">
     <mat-toolbar-row fxLayout="row" fxLayoutAlign="start center">
       <span>
-        <button mat-icon-button
-          type="button"
-          (click)="sidenavToggle$.next(null)"
-          >
+        <button mat-icon-button aria-label="Open Sidenav" type="button" (click)="sidenavToggle$.next(null)">
           <mat-icon>menu</mat-icon>
         </button>
       </span>
@@ -14,9 +11,7 @@
       </span>
       <span fxFlex></span>
       <span>
-        <button mat-icon-button 
-          aria-label="Search"
-          (click)="showSearch = true">
+        <button mat-icon-button aria-label="Search" (click)="showSearch = true">
           <mat-icon>search</mat-icon>
         </button>
       </span>
