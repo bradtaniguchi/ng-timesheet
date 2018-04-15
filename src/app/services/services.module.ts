@@ -6,15 +6,18 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { TimesheetService } from './timesheet/timesheet.service';
 import { ErrorHandlerService } from './error-handler/error-handler.service';
+import { MatDialogModule } from '@angular/material';
+import { DialogService } from './dialog/dialog.service';
 @NgModule({
   imports: [
     CommonModule,
 
     // firestore modules
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatDialogModule
   ],
-  declarations: [],
+  declarations: []
 })
 export class ServicesModule {
   public static forRoot(): ModuleWithProviders {
@@ -24,6 +27,7 @@ export class ServicesModule {
         NavService,
         AuthService,
         TimesheetService,
+        DialogService,
         {
           provide: ErrorHandler,
           useClass: ErrorHandlerService
