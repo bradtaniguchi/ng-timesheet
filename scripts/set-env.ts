@@ -29,7 +29,7 @@ if (!existsSync(dir)) {
   mkdirSync(dir);
 }
 
-writeFile(targetPath, envConfigFile, function (err) {
+writeFile(targetPath, envConfigFile, function(err) {
   if (err) {
     console.log('err: ', err);
   }
