@@ -27,14 +27,13 @@ describe('DialogService', () => {
           useClass: MockObservableMedia
         }
       ],
-      declarations: [
-        MockComponent
-      ],
+      declarations: [MockComponent]
     });
     TestBed.overrideModule(BrowserDynamicTestingModule, {
       set: {
         entryComponents: [MockComponent]
       }
+    });
   });
 
   it(
@@ -64,11 +63,14 @@ describe('DialogService', () => {
   );
   it(
     'open calls matDialog',
-    inject([DialogService], (service: DialogService, matDialog: MatDialog) => {
-      spyOn(matDialog, 'open').and.callThrough();
-      service.open(MockComponent);
-      expect(matDialog.open).toHaveBeenCalled();
-    })
+    inject(
+      [DialogService, MatDialog],
+      (service: DialogService, matDialog: MatDialog) => {
+        spyOn(matDialog, 'open').and.callThrough();
+        service.open(MockComponent);
+        expect(matDialog.open).toHaveBeenCalled();
+      }
+    )
   );
   describe('getWidth', () => {
     const getWidthTestCases = [
