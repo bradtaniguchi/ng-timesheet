@@ -1,47 +1,60 @@
 <div fxLayout="row"
-  class="full-height scrolling"
-  fxLayout="center center"
-  fxFlexOffset.md="20"
-  fxFlexOffset.lg="20"
-  fxFlexOffset.xl="30"
-  fxFlex>
-  <div 
-    fxFlex.xs="100"
-    fxFlex.sm="100" 
-    fxFlex.md="80"
-    fxFlex.lg="80"
-    fxFlex.xl="60"
-    style="margin-bottom: 64px">
-    <mat-card fxFlex="100" class="no-padding all-around-margin"> <!-- class="all-around-margin no-padding" -->
-      <mat-table
-        [dataSource]="dataSource">
-        <ng-container *ngFor="let col of displayColumns;" [cdkColumnDef]= "col">
-          <mat-header-cell  *matHeaderCellDef> {{ col }}</mat-header-cell>
-          <mat-cell *matCellDef="let timesheet">  
+     class="full-height scrolling"
+     fxLayout="center center"
+     fxFlexOffset.md="20"
+     fxFlexOffset.lg="20"
+     fxFlexOffset.xl="30"
+     fxFlex>
+  <div fxFlex.xs="100"
+       fxFlex.sm="100"
+       fxFlex.md="80"
+       fxFlex.lg="80"
+       fxFlex.xl="60"
+       style="margin-bottom: 64px">
+    <mat-card fxFlex="100"
+              class="no-padding all-around-margin">
+      <!-- class="all-around-margin no-padding" -->
+      <mat-table [dataSource]="dataSource">
+        <ng-container *ngFor="let col of displayColumns;"
+                      [cdkColumnDef]="col">
+          <mat-header-cell *matHeaderCellDef> {{ col }}</mat-header-cell>
+          <mat-cell *matCellDef="let timesheet">
             <ng-container *ngIf="timesheet[col]"> {{getDisplayValue(timesheet, col)}} </ng-container>
           </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
-        <mat-row *matRowDef="let timesheet; columns: displayColumns;" 
-        [ngClass]="{
+        <mat-row *matRowDef="let timesheet; columns: displayColumns;"
+                 [ngClass]="{
           selected: selection.isSelected(timesheet)
         }"
-        (click)="select.next(timesheet)"></mat-row>
+                 (click)="select.next(timesheet)"></mat-row>
       </mat-table>
 
-      <mat-card-actions class="normal-margin" align="end">
-        <button mat-button (click)="edit(selection)"
-          *ngIf="selection.selected.length === 1" 
-          type="button" 
-          color="primary">
+      <mat-card-actions class="normal-margin"
+                        style="padding: 8px 0"
+                        *ngIf="selection.selected.length > 0"
+                        align="end">
+        <button mat-button
+                (click)="view(selection.selected[0])"
+                *ngIf="selection.selected.length === 1"
+                type="button"
+                color="primary">
+          View
+        </button>
+        <button mat-button
+                (click)="edit(selection.selected[0])"
+                *ngIf="selection.selected.length === 1"
+                type="button"
+                color="primary">
           Edit
         </button>
-        <button mat-button (click)="remove(selection)"
-          *ngIf="selection.selected.length === 1" 
-          type="button" 
-          color="primary">
-          Edit
+        <button mat-button
+                (click)="remove(selection.selected[0])"
+                *ngIf="selection.selected.length === 1"
+                type="button"
+                color="primary">
+          Remove
         </button>
       </mat-card-actions>
     </mat-card>

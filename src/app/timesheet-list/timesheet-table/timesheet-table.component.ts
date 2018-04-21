@@ -1,4 +1,11 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { TimesheetTableDataSource } from './timesheet-table-data-source';
 import { DataSource } from '@angular/cdk/table';
 import { TimesheetService } from '../../services/timesheet/timesheet.service';
@@ -31,30 +38,33 @@ export class TimesheetTableComponent implements OnInit, OnDestroy {
     private displayColumnService: DisplayColumnService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.dataSource = new TimesheetTableDataSource(
       this.timesheetService,
       this.orderBy,
-      this.limit,
+      this.limit
       // this.startAfter,
       // this.endAt
     );
     this.displayColumnService.displayColumns
-    .pipe(takeUntil(this.takeUntil))
-    .subscribe((displayColumns) => {
-      this.displayColumns = displayColumns;
-    });
+      .pipe(takeUntil(this.takeUntil))
+      .subscribe(displayColumns => {
+        this.displayColumns = displayColumns;
+      });
   }
   ngOnDestroy() {
     this.takeUntil.next();
     this.takeUntil.unsubscribe();
   }
-  getDisplayValue(timesheet: Timesheet, col: string, ) {
+  getDisplayValue(timesheet: Timesheet, col: string) {
     return this.displayColumnService.getDisplayValue(timesheet, col);
   }
 
+  view(timesheet: Timesheet): void {
+    this.router.navigate(['../view', timesheet.id]);
+  }
   /**
    * Routes the user to the edit page to edit the timesheet
    * @param timesheet the timesheet we will edit
@@ -64,18 +74,16 @@ export class TimesheetTableComponent implements OnInit, OnDestroy {
   }
 
   remove(timesheet: Timesheet): void {
-    this.timesheetService.remove(timesheet)
-    .pipe(
-      takeUntil(this.takeUntil),
-      take(1)
-    )
-    .subscribe(
-      (res) => {
-        // TODO: show snackbar
-      },
-      (err) => {
-        // TODO: show snackbar
-      },
-    );
+    this.timesheetService
+      .remove(timesheet)
+      .pipe(takeUntil(this.takeUntil), take(1))
+      .subscribe(
+        res => {
+          // TODO: show snackbar
+        },
+        err => {
+          // TODO: show snackbar
+        }
+      );
   }
 }

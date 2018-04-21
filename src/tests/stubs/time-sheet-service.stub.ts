@@ -4,7 +4,7 @@ import { Timesheet } from '../../app/interfaces/timesheet';
 import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class TimeSheetServiceStub {
-  constructor() { }
+  constructor() {}
   getDefault() {
     return {};
   }
@@ -19,6 +19,9 @@ export class TimeSheetServiceStub {
     return Observable.of({});
   }
   remove() {
+    return Observable.of({});
+  }
+  getOne() {
     return Observable.of({});
   }
 }

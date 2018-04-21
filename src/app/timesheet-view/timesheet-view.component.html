@@ -1,0 +1,101 @@
+<ng-container *ngIf="timesheet$ | async as timesheet">
+  <div fxLayout="row"
+       class="full-height scrolling"
+       fxLayout="center center"
+       fxLayoutOffset.md="20"
+       fxFlexOffset.lg="20"
+       fxFlexOffset.xl="30"
+       fxFlex>
+    <div fxFlex.xs="100"
+         fxFlex.sm="100"
+         fxFlex.md="80"
+         fxFlex.lg="80"
+         fxFlex.xl="60"
+         style="margin-bottom: 64px">
+      <div>
+        <!-- date information -->
+        <mat-card class="all-around-margin">
+          <mat-card-title>
+            Date time information
+          </mat-card-title>
+          <mat-card-content>
+            <!-- first the date, time, breaktime-->
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between center">
+              <span>
+                <span class="mat-body-2">Date:</span>
+                <span>{{timesheet.date}}</span>
+              </span>
+              <span>
+                <span class="mat-body-2">Start Time:</span>
+                <span>{{timesheet.startTime}}</span>
+              </span>
+              <span>
+                <span class="mat-body-2">End Time:</span>
+                <span>{{timesheet.endTime}}</span>
+              </span>
+              <span>
+                <span class="mat-body-2">Break Time (hrs):</span>
+                <span>{{timesheet.breakTime}}</span>
+              </span>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <mat-card class="all-around-margin">
+        <mat-card-title>
+          Timesheet Details
+        </mat-card-title>
+        <mat-card-content>
+          <!--User, and project information-->
+          <div fxLayout="row">
+            <span class="mat-body-2">User:</span>
+            <span>{{timesheet.createdBy | json}}</span>
+            <!-- create component for this -->
+          </div>
+          <!-- create component for project and worktype information -->
+          <div>
+            project: {{timesheet.project | json}}
+          </div>
+          <!-- create component for team information -->
+          <div>
+            team: {{timesheet.team | json}}
+          </div>
+          <div>
+            <div class="mat-body-2">
+              Description:
+            </div>
+            <div class="mat-body-1">
+              {{timesheet.description}}
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button (click)="remove()"
+                  color="warn"
+                  mat-button
+                  type="button">
+            Remove
+          </button>
+          <button (click)="edit()"
+                  color="primary"
+                  mat-button
+                  type="button">
+            Edit
+          </button>
+          <!--TODO:  if project owner show other buttons here aswell!-->
+        </mat-card-actions>
+      </mat-card>
+      <!-- comment card-->
+      <mat-card class="all-around-margin last-card-margin">
+        <mat-card-title>
+          Comments
+        </mat-card-title>
+        <mat-card-content>
+          <!-- TODO: add timesheet-comment component here-->
+          comments feature to be added
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</ng-container>

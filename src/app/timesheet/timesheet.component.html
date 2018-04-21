@@ -1,21 +1,20 @@
-<div fxLayout="row" 
-  fxLayout="center center"
-  fxFlexOffset.md="20"
-  fxFlexOffset.lg="20"
-  fxFlexOffset.xl="30"
-  fxFlex>
-  <form #form="ngForm" 
-    (ngSubmit)="submit()"
-    fxFlex.xs="100"
-    fxFlex.sm="100" 
-    fxFlex.md="80"
-    fxFlex.lg="80"
-    fxFlex.xl="60"
-    >
+<div fxLayout="row"
+     fxLayout="center center"
+     fxFlexOffset.md="20"
+     fxFlexOffset.lg="20"
+     fxFlexOffset.xl="30"
+     fxFlex>
+  <form #form="ngForm"
+        (ngSubmit)="submit()"
+        fxFlex.xs="100"
+        fxFlex.sm="100"
+        fxFlex.md="80"
+        fxFlex.lg="80"
+        fxFlex.xl="60">
     <!-- <pre>
       {{this.form.value | json}}
     </pre> -->
-    <mat-card class="all-around-margin">
+    <mat-card class="all-around-margin last-card-margin">
       <mat-card-title>
         <ng-container *ngIf="edit; else elseCreateTitle">
           Edit
@@ -33,68 +32,66 @@
           Create a new timesheet below
         </ng-template>
       </mat-card-subtitle>
-      <mat-card-content fxLayout="row" 
-        fxLayoutWrap
-        fxLayoutAlign="start center"
-        fxLayoutGap="16px">
+      <mat-card-content fxLayout="row"
+                        fxLayoutWrap
+                        fxLayoutAlign="start center"
+                        fxLayoutGap="16px">
         <!-- put the user's information here-->
         <span fxFlex="100">
 
         </span>
-        <span fxFlex="calc(50% - 16px)" class="mat-body-2">
+        <span fxFlex="calc(50% - 16px)"
+              class="mat-body-2">
           Current User: {{(user$ | async)?.displayName }}
         </span>
         <mat-form-field fxFlex="calc(50% - 16px)">
-          <mat-icon matPrefix (click)="getTodaysDate()" class="clickable">view_week</mat-icon>
+          <mat-icon matPrefix
+                    (click)="getTodaysDate()"
+                    class="clickable">view_week</mat-icon>
           <mat-placeholder>Date</mat-placeholder>
           <input matInput
-            name="date"
-            #date="ngModel"
-            type="date"
-            [ngModel]="timesheet.date"
-            >
+                 name="date"
+                 #date="ngModel"
+                 type="date"
+                 [ngModel]="timesheet.date">
         </mat-form-field>
         <mat-form-field fxFlex="calc(25% - 16px)">
           <mat-icon matPrefix>access_time</mat-icon>
           <mat-placeholder>Start Time</mat-placeholder>
           <input matInput
-            name="startTime"
-            #startTime="ngModel"
-            type="time"
-            [ngModel]="timesheet.startTime"
-            >
+                 name="startTime"
+                 #startTime="ngModel"
+                 type="time"
+                 [ngModel]="timesheet.startTime">
         </mat-form-field>
         <mat-form-field fxFlex="calc(25% - 16px)">
           <mat-icon matPrefix>timelapse</mat-icon>
           <mat-placeholder>End Time</mat-placeholder>
           <input matInput
-            name="endTime"
-            #endTime="ngModel"
-            type="time"
-            [ngModel]="timesheet.endTime"
-            >
+                 name="endTime"
+                 #endTime="ngModel"
+                 type="time"
+                 [ngModel]="timesheet.endTime">
         </mat-form-field>
         <mat-form-field fxFlex="calc(25% - 16px)">
           <mat-icon matPrefix>timer_off</mat-icon>
           <mat-placeholder>Break Time</mat-placeholder>
           <input matInput
-            name="breakTime"
-            #breakTime="ngModel"
-            type="number"
-            [ngModel]="timesheet.breakTime"
-            >
+                 name="breakTime"
+                 #breakTime="ngModel"
+                 type="number"
+                 [ngModel]="timesheet.breakTime">
         </mat-form-field>
         <span fxFlex="calc(25%-16px)">
-          Total Work time: 
+          Total Work time:
         </span>
         <mat-form-field fxFlex="calc(33% - 16px)">
           <mat-icon matPrefix>assignment</mat-icon>
           <mat-placeholder>Work Type</mat-placeholder>
           <mat-select matInput
-            name="workType"
-            #workType="ngModel"
-            [ngModel]="timesheet.workType"
-            >
+                      name="workType"
+                      #workType="ngModel"
+                      [ngModel]="timesheet.workType">
             <mat-option></mat-option>
             <mat-option value="one">
               One
@@ -109,10 +106,9 @@
           <mat-icon matPrefix>group</mat-icon>
           <mat-placeholder>Team</mat-placeholder>
           <mat-select matInput
-            name="team"
-            #team="ngModel"
-            [ngModel]="timesheet.team"
-            >
+                      name="team"
+                      #team="ngModel"
+                      [ngModel]="timesheet.team">
             <mat-option></mat-option>
             <mat-option value="one">
               One
@@ -126,10 +122,9 @@
           <mat-icon matPrefix>label</mat-icon>
           <mat-placeholder>Project</mat-placeholder>
           <mat-select matInput
-            name="project"
-            #project="ngModel"
-            [ngModel]="timesheet.project"
-            >
+                      name="project"
+                      #project="ngModel"
+                      [ngModel]="timesheet.project">
             <mat-option></mat-option>
             <mat-option value="one">
               One
@@ -143,27 +138,29 @@
           <mat-icon matPrefix>description</mat-icon>
           <mat-placeholder>Description</mat-placeholder>
           <textarea matInput
-            name="description"
-            #description="ngModel"
-            [ngModel]="timesheet.description"
-            >
+                    name="description"
+                    #description="ngModel"
+                    [ngModel]="timesheet.description">
           </textarea>
         </mat-form-field>
         <div fxFlex="100">
 
         </div>
       </mat-card-content>
-      <mat-card-actions align="end" class="fix-card-actions">
-        <button (click)="cancel()" mat-button>
+      <mat-card-actions align="end">
+        <button (click)="cancel()"
+                mat-button>
           Cancel
         </button>
         <!-- TODO: add support for the timesheet preview, this preview page shows the timesheet
           in the readonly mode
-        --> 
+        -->
         <!-- <button (click)="preview()" mat-button color="accent">
           Preview
         </button> -->
-        <button type="submit" mat-button color="primary">
+        <button type="submit"
+                mat-button
+                color="primary">
           Submit
         </button>
       </mat-card-actions>

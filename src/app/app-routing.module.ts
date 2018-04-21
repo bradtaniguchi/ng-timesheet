@@ -8,9 +8,7 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [
-      AuthGuard
-    ],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -28,6 +26,11 @@ const routes: Routes = [
       {
         path: 'sheet/:id',
         component: TimesheetComponent
+      },
+      {
+        path: 'view/:id',
+        loadChildren:
+          'app/timesheet-view/timesheet-view.module#TimesheetViewModule'
       }
     ]
   },
@@ -45,4 +48,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

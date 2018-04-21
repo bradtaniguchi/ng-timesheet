@@ -21,12 +21,15 @@ import { environment } from '../environments/environment';
 import { ConstantsModule } from './constants/constants.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 // rxjs prototypes
-import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/do'; // depricate
 import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/observable/merge';
-import { DefaultQueryConfig, DEFAULT_QUERY_CONFIG } from './constants/default-query-config';
-
+import 'rxjs/add/observable/forkJoin'; // deprecate
+import 'rxjs/add/observable/merge'; // deprecatre
+import 'rxjs/add/observable/throw';
+import {
+  DefaultQueryConfig,
+  DEFAULT_QUERY_CONFIG
+} from './constants/default-query-config';
 
 @NgModule({
   imports: [
@@ -35,14 +38,16 @@ import { DefaultQueryConfig, DEFAULT_QUERY_CONFIG } from './constants/default-qu
     AppRoutingModule,
 
     // service worker
-    ServiceWorkerModule.register('ngsw-config.json', {enabled: environment.production}),
+    ServiceWorkerModule.register('ngsw-config.json', {
+      enabled: environment.production
+    }),
     // firebase, when ready
     AngularFireModule.initializeApp(environment.firebase),
 
     // app modules
     ServicesModule.forRoot(),
     ConstantsModule,
-    GuardsModule,
+    GuardsModule.forRoot(),
 
     LandingModule,
     TimesheetModule,
@@ -55,9 +60,7 @@ import { DefaultQueryConfig, DEFAULT_QUERY_CONFIG } from './constants/default-qu
     // angular modules
     MatSidenavModule
   ],
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   providers: [
     {
       provide: DEFAULT_QUERY_CONFIG,
@@ -66,4 +69,4 @@ import { DefaultQueryConfig, DEFAULT_QUERY_CONFIG } from './constants/default-qu
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

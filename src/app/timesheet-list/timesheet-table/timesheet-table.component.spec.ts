@@ -1,7 +1,17 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import {
+  async,
+  ComponentFixture,
+  TestBed,
+  inject
+} from '@angular/core/testing';
 
 import { TimesheetTableComponent } from './timesheet-table.component';
-import { MatSortModule, MatPaginatorModule, MatTableModule, MatCardModule } from '@angular/material';
+import {
+  MatSortModule,
+  MatPaginatorModule,
+  MatTableModule,
+  MatCardModule
+} from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { TimesheetService } from '../../services/timesheet/timesheet.service';
 import { TimeSheetServiceStub } from '../../../tests/stubs/time-sheet-service.stub';
@@ -29,13 +39,12 @@ describe('TimesheetTableComponent', () => {
         MatPaginatorModule,
         MatSortModule
       ],
-      declarations: [ TimesheetTableComponent ],
+      declarations: [TimesheetTableComponent],
       providers: [
-        {provide: TimesheetService, useClass: TimeSheetServiceStub },
-        {provide: DisplayColumnService, useClass: DisplayColumnServiceStub}
+        { provide: TimesheetService, useClass: TimeSheetServiceStub },
+        { provide: DisplayColumnService, useClass: DisplayColumnServiceStub }
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -53,19 +62,38 @@ describe('TimesheetTableComponent', () => {
     expect(component.dataSource).toBeTruthy();
   });
 
-  it('edit routes the user to the selected timesheet user', inject([Router], (router: Router) => {
-    const testTimesheet = {
-      id: 'testId'
-    };
-    const spy = spyOn(router, 'navigate');
-    component.edit((testTimesheet as any));
-    const url = spy.calls.first().args[0];
-    expect(url).toEqual(['../sheet', 'testId']);
-  }));
+  it(
+    'edit routes the user to the selected timesheet user',
+    inject([Router], (router: Router) => {
+      const testTimesheet = {
+        id: 'testId'
+      };
+      const spy = spyOn(router, 'navigate');
+      component.edit(testTimesheet as any);
+      const url = spy.calls.first().args[0];
+      expect(url).toEqual(['../sheet', 'testId']);
+    })
+  );
 
-  it('remove deletes the given timesheet', inject([TimesheetService], (timesheetService: TimesheetService) => {
-    spyOn(timesheetService, 'remove').and.callFake(() => Observable.of({}));
-    component.remove(<any>{});
-    expect(timesheetService.remove).toHaveBeenCalled();
-  }));
+  it(
+    'remove deletes the given timesheet',
+    inject([TimesheetService], (timesheetService: TimesheetService) => {
+      spyOn(timesheetService, 'remove').and.callFake(() => Observable.of({}));
+      component.remove(<any>{});
+      expect(timesheetService.remove).toHaveBeenCalled();
+    })
+  );
+
+  it(
+    'view routes the user to the selected timesheet user',
+    inject([Router], (router: Router) => {
+      const testTimesheet = {
+        id: 'testId'
+      };
+      const spy = spyOn(router, 'navigate');
+      component.view(testTimesheet as any);
+      const url = spy.calls.first().args[0];
+      expect(url).toEqual(['../view', 'testId']);
+    })
+  );
 });
