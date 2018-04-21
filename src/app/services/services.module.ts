@@ -8,6 +8,7 @@ import { TimesheetService } from './timesheet/timesheet.service';
 import { ErrorHandlerService } from './error-handler/error-handler.service';
 import { MatDialogModule } from '@angular/material';
 import { DialogService } from './dialog/dialog.service';
+import { ToastService } from './toast/toast.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,6 +29,7 @@ export class ServicesModule {
         AuthService,
         TimesheetService,
         DialogService,
+        ToastService,
         {
           provide: ErrorHandler,
           useClass: ErrorHandlerService
