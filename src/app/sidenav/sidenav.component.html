@@ -2,9 +2,8 @@
   <mat-toolbar-row>
     <span>
       <button mat-icon-button
-        type="buttton"
-        (click)="sidenavClose.next(null)"
-        >
+              type="buttton"
+              (click)="sidenavClose.next(null)">
         <mat-icon>arrow_back</mat-icon>
       </button>
     </span>
@@ -12,13 +11,12 @@
 </mat-toolbar>
 <div>
   <mat-list role="list">
-    <mat-list-item role="listitem" 
-      [routerLink]="navService.root()" 
-      (click)="sidenavClose.next(null)"
-      class="clickable">
-      <a fxLayout="row" 
-        fxLayoutAlign="start center"
-        >
+    <mat-list-item role="listitem"
+                   [routerLink]="navService.root()"
+                   (click)="sidenavClose.next(null)"
+                   class="clickable">
+      <a fxLayout="row"
+         fxLayoutAlign="start center">
         <mat-icon matListIcon>
           home
         </mat-icon>
@@ -28,12 +26,11 @@
       </a>
     </mat-list-item>
     <mat-list-item role="listitem"
-      [routerLink]="navService.newSheet()" 
-      (click)="sidenavClose.next(null)"
-      class="clickable">
-      <a fxLayout="row" 
-        fxLayoutAlign="start center"
-        >
+                   [routerLink]="navService.newSheet()"
+                   (click)="sidenavClose.next(null)"
+                   class="clickable">
+      <a fxLayout="row"
+         fxLayoutAlign="start center">
         <mat-icon matListIcon>
           today
         </mat-icon>
@@ -43,12 +40,11 @@
       </a>
     </mat-list-item>
     <mat-list-item role="listitem"
-      [routerLink]="navService.sheetList()" 
-      (click)="sidenavClose.next(null)"
-      class="clickable">
-      <a fxLayout="row" 
-        fxLayoutAlign="start center"
-        >
+                   [routerLink]="navService.sheetList()"
+                   (click)="sidenavClose.next(null)"
+                   class="clickable">
+      <a fxLayout="row"
+         fxLayoutAlign="start center">
         <mat-icon matListIcon>
           view_agenda
         </mat-icon>
@@ -58,5 +54,33 @@
       </a>
     </mat-list-item>
     <mat-divider></mat-divider>
+    <mat-list-item role="listitem"
+                   [routerLink]="navService.teamList()"
+                   (click)="sidenavClose.next(null)"
+                   class="clickable">
+      <a fxLayout="row"
+         fxLayoutAlign="start center">
+        <mat-icon matListIcon>
+          group
+        </mat-icon>
+        <span matLine>
+          Teams
+        </span>
+      </a>
+    </mat-list-item>
+    <mat-list-item role="listitem"
+                   [routerLink]="navService.myTeams()"
+                   (click)="sidenavClose.next(null)"
+                   class="clickable">
+      <a fxLayout="row"
+         fxLayoutAlign="start center">
+        <mat-icon matListIcon>
+          group_outline
+        </mat-icon>
+        <span matLine>
+          My Teams
+        </span>
+      </a>
+    </mat-list-item>
   </mat-list>
 </div>

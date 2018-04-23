@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * TODO: refactor this service to just provide some constants, rather than functions.
+ */
 @Injectable()
 /**
  * NavService provides public functions for all routes within the application.
  */
 export class NavService {
-
   constructor() {
     console.log('navService class created');
   }
@@ -51,5 +53,12 @@ export class NavService {
    */
   public team(id: string): string {
     return `/teams/${id}`;
+  }
+
+  /**
+   * Shows the list of teams the current user has access to.
+   */
+  public myTeams(): string {
+    return `/me/teams`; // the me path will be expanded upon from the user-profile feature
   }
 }

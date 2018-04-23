@@ -36,6 +36,10 @@ const routes: Routes = [
       {
         path: 'team/:id',
         loadChildren: 'app/team/team.module#TeamModule'
+      },
+      {
+        path: 'teams',
+        loadChildren: 'app/team-list/team-list.module#TeamListModule'
       }
     ]
   },
