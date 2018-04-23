@@ -6,7 +6,7 @@ import { AuthServiceStub } from '../../../tests/stubs/auth-service.stub';
 import { AngularFirestoreMock } from '../../../tests/mock/angular-firestore.mock';
 import { AngularFirestore } from 'angularfire2/firestore';
 
-fdescribe('TeamService', () => {
+describe('TeamService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
