@@ -32,6 +32,10 @@ const routes: Routes = [
         path: 'view/:id',
         loadChildren:
           'app/timesheet-view/timesheet-view.module#TimesheetViewModule'
+      },
+      {
+        path: 'team/:id',
+        loadChildren: 'app/team/team.module#TeamModule'
       }
     ]
   },
