@@ -9,3 +9,11 @@
 .full-height {
   height: 100%;
 }
+
+// this margin should be used on items that are on the bottom of the page.
+.all-around-margin.bottom-margin {
+  margin-bottom: 64px;
+}
+.bottom-margin {
+  margin-bottom: 64px;
+}

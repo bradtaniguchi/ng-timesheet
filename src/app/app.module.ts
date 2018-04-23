@@ -26,6 +26,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/forkJoin'; // deprecate
 import 'rxjs/add/observable/merge'; // deprecatre
 import 'rxjs/add/observable/throw';
+import { Page404Module } from './page-404/page-404.module';
 import {
   DefaultQueryConfig,
   DEFAULT_QUERY_CONFIG
@@ -46,8 +47,8 @@ import {
 
     // app modules
     ServicesModule.forRoot(),
-    ConstantsModule,
     GuardsModule.forRoot(),
+    ConstantsModule,
 
     LandingModule,
     TimesheetModule,
@@ -56,6 +57,7 @@ import {
     NavbarModule,
     CreateFabModule,
     CurrentUserProfileModule,
+    Page404Module,
 
     // angular modules
     MatSidenavModule

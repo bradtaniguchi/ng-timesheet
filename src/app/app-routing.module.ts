@@ -4,6 +4,7 @@ import { LandingComponent } from './landing/landing.component';
 import { TimesheetListComponent } from './timesheet-list/timesheet-list.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { AuthGuard } from './guards/auth.guard';
+import { Page404Component } from './page-404/page-404.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,14 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: 'app/login/login.module#LoginModule'
+  },
+  {
+    path: '404',
+    component: Page404Component
+  },
+  {
+    path: '**',
+    redirectTo: '404'
   }
 ];
 
