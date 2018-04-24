@@ -18,6 +18,7 @@ export class TeamListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.teams$ = this.teamService.get();
+    // this.teams$ = this.teamService.get();
+    this.teams$ = <any>Observable.of([{}, {}, {}]);
   }
 }
