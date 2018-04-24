@@ -7,9 +7,10 @@ import { AuthService } from '../auth/auth.service';
 import { Observable } from 'rxjs/Observable';
 import { Team } from '../../interfaces/team';
 import { switchMap } from 'rxjs/operators';
+import { LogService } from '../../interfaces/log-service';
 
 @Injectable()
-export class TeamService {
+export class TeamService implements LogService {
   private teamCollection: AngularFirestoreCollection<Team>;
   private teams: Observable<Array<Team>>;
   constructor(
@@ -44,4 +45,9 @@ export class TeamService {
     // TODO: verify the share is correct and doesn't make bugs!
     return this.teams.share();
   }
+  // TODO: add us
+  getLogs(documentId: string): Observable<Array<any>> {
+    return Observable.of([]);
+  }
+  addLog(documentId: string, log: any): any {}
 }
