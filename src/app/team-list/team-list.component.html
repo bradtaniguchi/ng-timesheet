@@ -1,3 +1,18 @@
-<p>
-  team-list works!
-</p>
+<ng-container *ngIf="teams$ | async as teams">
+  <div fxLayout="row"
+       class="full-height scrolling"
+       fxLayout="center center"
+       fxLayoutOffset.md="20"
+       fxFlexOffset.lg="20"
+       fxFlexOffset.xl="30"
+       fxFlex>
+    <div class="all-around-margin">
+      <!-- -->
+      <div fxLayout="row wrap">
+        <app-team-list-item *ngFor="let team of teams"
+                            [team]="team">
+        </app-team-list-item>
+      </div>
+    </div>
+  </div>
+</ng-container>

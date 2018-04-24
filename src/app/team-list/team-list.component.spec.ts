@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TeamListComponent } from './team-list.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('TeamListComponent', () => {
   let component: TeamListComponent;
@@ -8,9 +9,9 @@ describe('TeamListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeamListComponent ]
-    })
-    .compileComponents();
+      imports: [FlexLayoutModule],
+      declarations: [TeamListComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
