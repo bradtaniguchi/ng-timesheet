@@ -1,31 +1,15 @@
 <ng-container *ngIf="teams$ | async as teams">
-  <div fxLayout="row"
-       class="full-height scrolling"
-       fxLayout="center center"
-       fxFlexOffset.md="20"
-       fxFlexOffset.lg="20"
-       fxFlexOffset.xl="30"
-       fxFlex>
-    <div class="all-around-margin"
-         fxFlex.xs="100"
-         fxFlex.sm="100"
-         fxFlex.md="80"
-         fxFlex.lg="80"
-         fxFlex.xl="60"
-         fxLayout="row wrap"
-         fxLayoutGap="16px">
-      <!-- -->
-      <!-- <div
-           fxFlex> -->
-      <app-team-list-item *ngFor="let team of teams"
-                          fxFlex.xs="100"
-                          fxFlex.sm="50"
-                          fxFlex.md="50"
-                          fxFlex.lg="25"
-                          fxFlex.xl="25"
-                          [team]="team">
-      </app-team-list-item>
-      <!-- </div> -->
-    </div>
+  <div class="all-around-margin"
+       fxLayout="row wrap">
+    <app-team-list-item *ngFor="let team of teams"
+                        class="all-around-margin"
+                        fxFlex.xs="100"
+                        fxFlex.sm="50"
+                        fxFlex.md="50"
+                        fxFlex.lg="25"
+                        fxFlex.xl="25"
+                        [team]="team">
+    </app-team-list-item>
+    <!-- </div> -->
   </div>
 </ng-container>

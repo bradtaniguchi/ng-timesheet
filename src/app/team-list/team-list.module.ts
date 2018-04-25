@@ -5,7 +5,11 @@ import { TeamListRoutingModule } from './team-list-routing.module';
 import { TeamListComponent } from './team-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TeamListItemComponent } from './team-list-item/team-list-item.component';
-import { MatCardModule } from '@angular/material';
+import {
+  MatCardModule,
+  MatButtonModule,
+  MatIconModule
+} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -14,7 +18,9 @@ import { MatCardModule } from '@angular/material';
 
     // angular modules
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule
   ],
   declarations: [TeamListComponent, TeamListItemComponent]
 })

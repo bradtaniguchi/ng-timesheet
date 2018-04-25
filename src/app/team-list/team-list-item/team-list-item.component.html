@@ -1,7 +1,62 @@
 <mat-card>
+  <mat-card-title>
+    {{team.name}}
+  </mat-card-title>
   <mat-card-content>
+    <div>
+      {{team.description}}
+    </div>
     <pre>
       {{team | json}}
     </pre>
   </mat-card-content>
+  <mat-card-actions class="normal-margin"
+                    fxLayout="row">
+    <button aria-label="Info"
+            mat-icon-button
+            type="button"
+            (click)="showInfo.emit(team)">
+      <mat-icon>info</mat-icon>
+    </button>
+    <span fxFlex></span>
+    <button aria-label="Join"
+            mat-button
+            type="button"
+            (click)="join.emit(team)"
+            *ngIf="showJoin()"
+            color="primary">
+      Join
+    </button>
+    <button aria-label="Leave"
+            mat-button
+            type="button"
+            (click)="leave.emit(team)"
+            *ngIf="showLeave()"
+            color="warn">
+      Leave
+    </button>
+    <button aria-label="Profile"
+            mat-button
+            type="button"
+            (click)="profile.emit(team)"
+            color="primary">
+      Profile
+    </button>
+    <!-- <button aria-label="Projects"
+            mat-button
+            type="button"
+            (click)="projects.emit(team)"
+            *ngIf="showProjects()"
+            color="primary">
+      Projects
+    </button> -->
+    <!-- TODO: add support for more menu -->
+    <button aria-label="More"
+            mat-icon-button
+            type="button"
+            color="primary">
+      <mat-icon>more_vert</mat-icon>
+      <!-- show settings, metrics, users, other settings-->
+    </button>
+  </mat-card-actions>
 </mat-card>
