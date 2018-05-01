@@ -4,7 +4,8 @@ import { TeamListItemComponent } from './team-list-item.component';
 import {
   MatMenuModule,
   MatButtonModule,
-  MatCardModule
+  MatCardModule,
+  MatIconModule
 } from '@angular/material';
 
 describe('TeamListItemComponent', () => {
@@ -13,7 +14,7 @@ describe('TeamListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatMenuModule, MatButtonModule, MatCardModule],
+      imports: [MatMenuModule, MatButtonModule, MatCardModule, MatIconModule],
       declarations: [TeamListItemComponent]
     }).compileComponents();
   }));
