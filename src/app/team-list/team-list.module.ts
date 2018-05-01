@@ -8,7 +8,8 @@ import { TeamListItemComponent } from './team-list-item/team-list-item.component
 import {
   MatCardModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatMenuModule
 } from '@angular/material';
 
 @NgModule({
@@ -20,7 +21,8 @@ import {
     FlexLayoutModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   declarations: [TeamListComponent, TeamListItemComponent]
 })

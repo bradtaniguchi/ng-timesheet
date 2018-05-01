@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TeamListItemComponent } from './team-list-item.component';
+import {
+  MatMenuModule,
+  MatButtonModule,
+  MatCardModule
+} from '@angular/material';
 
 describe('TeamListItemComponent', () => {
   let component: TeamListItemComponent;
@@ -8,9 +13,9 @@ describe('TeamListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeamListItemComponent ]
-    })
-    .compileComponents();
+      imports: [MatMenuModule, MatButtonModule, MatCardModule],
+      declarations: [TeamListItemComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

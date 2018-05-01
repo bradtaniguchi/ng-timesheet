@@ -10,10 +10,11 @@ import { ChangeDetectionStrategy } from '@angular/core';
 })
 export class TeamListItemComponent implements OnInit {
   @Input() team: Team;
-  @Output() showInfo = new EventEmitter<null>();
-  @Output() join = new EventEmitter<null>();
-  @Output() leave = new EventEmitter<null>();
-  @Output() profile = new EventEmitter<null>();
+  @Output() showInfo = new EventEmitter<Team>();
+  @Output() join = new EventEmitter<Team>();
+  @Output() leave = new EventEmitter<Team>();
+  @Output() profile = new EventEmitter<Team>();
+  @Output() projects = new EventEmitter<Team>();
   // @Output() projects = new EventEmitter<null>();
   constructor() {}
 

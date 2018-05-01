@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card fxFlex>
   <mat-card-title>
     {{team.name}}
   </mat-card-title>
@@ -13,13 +13,14 @@
   <mat-card-actions class="normal-margin"
                     fxLayout="row">
     <button aria-label="Info"
+            fxHide.lt-sm
             mat-icon-button
             type="button"
             (click)="showInfo.emit(team)">
       <mat-icon>info</mat-icon>
     </button>
     <span fxFlex></span>
-    <button aria-label="Join"
+    <!-- <button aria-label="Join"
             mat-button
             type="button"
             (click)="join.emit(team)"
@@ -34,29 +35,53 @@
             *ngIf="showLeave()"
             color="warn">
       Leave
-    </button>
+    </button> -->
     <button aria-label="Profile"
+            fxHide.lt-sm
             mat-button
             type="button"
             (click)="profile.emit(team)"
             color="primary">
       Profile
     </button>
-    <!-- <button aria-label="Projects"
+    <button aria-label="Projects"
+            fxHide.lt-sm
             mat-button
             type="button"
             (click)="projects.emit(team)"
             *ngIf="showProjects()"
             color="primary">
       Projects
-    </button> -->
+    </button>
     <!-- TODO: add support for more menu -->
     <button aria-label="More"
             mat-icon-button
             type="button"
-            color="primary">
+            color="primary"
+            [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
       <!-- show settings, metrics, users, other settings-->
+      <mat-menu #menu="matMenu">
+        <button type="button"
+                mat-menu-item
+                fxShow.lt-sm>Info</button>
+        <button type="button"
+                *ngIf="showJoin()"
+                mat-menu-item
+                (click)="join.emit(team)">Join</button>
+        <button type="button"
+                *ngIf="showLeave()"
+                mat-menu-item
+                (click)="leave.emit(team)">Leave</button>
+        <button type="button"
+                mat-menu-item
+                (click)="profile.emit(team)"
+                fxShow.lt-sm>Profile</button>
+        <button type="button"
+                mat-menu-item
+                (click)="projects.emit(team)"
+                fxShow.lt-sm>Projects</button>
+      </mat-menu>
     </button>
   </mat-card-actions>
 </mat-card>

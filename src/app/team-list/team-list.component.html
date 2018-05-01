@@ -1,15 +1,19 @@
 <ng-container *ngIf="teams$ | async as teams">
-  <div class="all-around-margin"
-       fxLayout="row wrap">
-    <app-team-list-item *ngFor="let team of teams"
-                        class="all-around-margin"
-                        fxFlex.xs="100"
-                        fxFlex.sm="50"
-                        fxFlex.md="50"
-                        fxFlex.lg="25"
-                        fxFlex.xl="25"
-                        [team]="team">
-    </app-team-list-item>
-    <!-- </div> -->
+  <div class="all-around-margin sm">
+    <div fxLayout="row wrap"
+         fxLayoutAlign="start start">
+      <ng-container *ngFor="let team of teams">
+        <app-team-list-item class="all-around-margin sm"
+                            fxFlex.xs="calc(100% - 16px)"
+                            fxFlex.sm="calc(100% - 16px)"
+                            fxFlex.md="calc(33% - 16px)"
+                            fxFlex.lg="calc(25% - 16px)"
+                            fxFlex.xl="calc(25% - 16px)"
+                            [team]="team">
+        </app-team-list-item>
+
+      </ng-container>
+      <!-- </div> -->
+    </div>
   </div>
 </ng-container>

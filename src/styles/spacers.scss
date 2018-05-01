@@ -11,15 +11,36 @@
   }
 }
 .top-bottom-padding {
-  padding: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   .sm {
-    margin: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
   .md {
-    margin: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
   .lg {
-    margin: 32px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+.top-bottom-margin {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  .sm {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  .md {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  .lg {
+    margin-top: 32px;
+    margin-bottom: 32px;
   }
 }
 
