@@ -9,7 +9,10 @@ describe('PaginationService', () => {
     });
   });
 
-  xit('should be created', inject([PaginationService], (service: PaginationService) => {
-    expect(service).toBeTruthy();
-  }));
+  xit(
+    'should be created',
+    inject([PaginationService], (service: PaginationService) => {
+      expect(service).toBeTruthy();
+    })
+  );
 });

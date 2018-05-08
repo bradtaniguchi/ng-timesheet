@@ -11,18 +11,15 @@ describe('CurrentUserProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CurrentUserProfileComponent ],
-      imports: [
-        MatTooltipModule
-      ],
+      declarations: [CurrentUserProfileComponent],
+      imports: [MatTooltipModule],
       providers: [
         {
           provide: AuthService,
           useClass: AuthServiceStub
         }
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

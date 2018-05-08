@@ -14,8 +14,7 @@ export class AuthService {
     private fireAuth: AngularFireAuth
   ) {
     console.log('starting in auth');
-    this.currentUser = this.fireAuth.authState
-    .switchMap((user) => {
+    this.currentUser = this.fireAuth.authState.switchMap(user => {
       if (user) {
         return this.fireDb.doc<User>(`users/${user.uid}`).valueChanges();
       } else {
@@ -36,8 +35,7 @@ export class AuthService {
    */
   authLoginPopup(): Promise<any> {
     const provider = new firebase.auth.GoogleAuthProvider();
-    return this.fireAuth.auth.signInWithPopup(provider)
-    .then((cred) => {
+    return this.fireAuth.auth.signInWithPopup(provider).then(cred => {
       console.log('authLoginPopup: ', cred);
       return this.updateUserData(cred.user);
     });
@@ -45,8 +43,7 @@ export class AuthService {
 
   authLoginRedirect(): Promise<any> {
     const provider = new firebase.auth.GoogleAuthProvider();
-    return this.fireAuth.auth.signInWithRedirect(provider)
-    .then((cred) => {
+    return this.fireAuth.auth.signInWithRedirect(provider).then(cred => {
       console.log('redirect cred?: ', cred);
       return this.updateUserData(cred.user);
     });

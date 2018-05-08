@@ -4,11 +4,8 @@ import { CurrentUserProfileComponent } from './current-user-profile.component';
 import { MatButtonModule, MatTooltipModule } from '@angular/material';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatTooltipModule
-  ],
+  imports: [CommonModule, MatTooltipModule],
   declarations: [CurrentUserProfileComponent],
   exports: [CurrentUserProfileComponent]
 })
-export class CurrentUserProfileModule { }
+export class CurrentUserProfileModule {}

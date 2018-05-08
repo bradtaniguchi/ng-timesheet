@@ -13,10 +13,9 @@ export class SidenavComponent implements OnInit {
   constructor(
     public navService: NavService,
     private sidenavStore: SidenavStoreService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.sidenavClose.subscribe(() => this.sidenavStore.setSidenav(false));
   }
-
 }

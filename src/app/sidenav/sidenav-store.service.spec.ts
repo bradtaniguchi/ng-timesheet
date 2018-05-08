@@ -9,7 +9,10 @@ describe('NavbarStoreService', () => {
     });
   });
 
-  it('should be created', inject([SidenavStoreService], (service: SidenavStoreService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([SidenavStoreService], (service: SidenavStoreService) => {
+      expect(service).toBeTruthy();
+    })
+  );
 });

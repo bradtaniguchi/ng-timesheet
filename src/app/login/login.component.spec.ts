@@ -12,16 +12,13 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule.withRoutes([])
-      ],
-      declarations: [ LoginComponent ],
+      imports: [RouterTestingModule.withRoutes([])],
+      declarations: [LoginComponent],
       providers: [
         NavService,
-        { provide: AuthService, useClass: AuthServiceStub}
+        { provide: AuthService, useClass: AuthServiceStub }
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -4,7 +4,12 @@ import { SidenavComponent } from './sidenav.component';
 import { NavService } from '../services/nav/nav.service';
 import { SidenavStoreService } from './sidenav-store.service';
 import { SidenavStoreServiceStub } from '../../tests/stubs/sidenav-store-service.stub';
-import { MatIconModule, MatButtonModule, MatListModule, MatToolbarModule } from '@angular/material';
+import {
+  MatIconModule,
+  MatButtonModule,
+  MatListModule,
+  MatToolbarModule
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -22,16 +27,15 @@ describe('SidenavComponent', () => {
         MatIconModule,
         MatButtonModule,
         MatListModule,
-        MatToolbarModule,
+        MatToolbarModule
       ],
-      declarations: [ SidenavComponent ],
+      declarations: [SidenavComponent],
       providers: [
         NavService,
         // { provide: NavService, useClass: NavServiceStub },
         { provide: SidenavStoreService, useClass: SidenavStoreServiceStub }
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

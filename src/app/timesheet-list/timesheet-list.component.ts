@@ -17,11 +17,9 @@ export class TimesheetListComponent implements OnInit, OnDestroy {
   timesheets: Observable<Array<Timesheet>>;
   selection = new SelectionModel(true, []);
   private takeUntil = new Subject();
-  constructor(
-  ) { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.takeUntil.next();

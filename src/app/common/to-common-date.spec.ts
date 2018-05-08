@@ -15,12 +15,14 @@ describe('toCommonDate', () => {
         // jan first
         date: new Date(2001, 0, 1),
         expected: '2001-01-01'
-      },
+      }
     ];
     const ohShit = testCases[1];
-    testCases.forEach((testCase) => testToCommonDate(testCase));
+    testCases.forEach(testCase => testToCommonDate(testCase));
     function testToCommonDate(testCase) {
-      it(`returns expected date, date: ${testCase.date} expected: ${testCase.expected}`, () => {
+      it(`returns expected date, date: ${testCase.date} expected: ${
+        testCase.expected
+      }`, () => {
         const result = toCommonDate(testCase.date);
         expect(result).toEqual(testCase.expected);
       });

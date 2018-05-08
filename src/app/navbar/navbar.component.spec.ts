@@ -1,7 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavbarComponent } from './navbar.component';
-import { MatIconModule, MatToolbarModule, MatButtonModule } from '@angular/material';
+import {
+  MatIconModule,
+  MatToolbarModule,
+  MatButtonModule
+} from '@angular/material';
 import { NavService } from '../services/nav/nav.service';
 import { SidenavStoreServiceStub } from '../../tests/stubs/sidenav-store-service.stub';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -16,20 +20,15 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-      imports: [
-        MatIconModule,
-        MatToolbarModule,
-        MatButtonModule
-      ],
-      declarations: [ NavbarComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [MatIconModule, MatToolbarModule, MatButtonModule],
+      declarations: [NavbarComponent],
       providers: [
         // { provide: NavService, useClass: NavServiceStub },
         { provide: SidenavStoreService, useClass: SidenavStoreServiceStub },
         { provide: SearchBarStoreService, useClass: SearchBarStoreServiceStub }
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

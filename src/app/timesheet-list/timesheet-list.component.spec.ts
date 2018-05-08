@@ -1,7 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TimesheetListComponent } from './timesheet-list.component';
-import { MatTableModule, MatCardModule, MatPaginatorModule } from '@angular/material';
+import {
+  MatTableModule,
+  MatCardModule,
+  MatPaginatorModule
+} from '@angular/material';
 import { TimesheetService } from '../services/timesheet/timesheet.service';
 import { TimeSheetServiceStub } from '../../tests/stubs/time-sheet-service.stub';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -23,18 +27,12 @@ describe('TimesheetListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        FlexLayoutModule,
-      ],
-      declarations: [
-        TimesheetListComponent,
-        MockTimesheetListTableComponent
-       ],
+      imports: [FlexLayoutModule],
+      declarations: [TimesheetListComponent, MockTimesheetListTableComponent],
       providers: [
         // {provide: TimesheetService, useClass: TimeSheetServiceStub}
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

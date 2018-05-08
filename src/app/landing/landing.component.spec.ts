@@ -10,12 +10,9 @@ describe('LandingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandingComponent ],
-      providers: [
-        {provide: AuthService, useClass: AuthServiceStub}
-      ]
-    })
-    .compileComponents();
+      declarations: [LandingComponent],
+      providers: [{ provide: AuthService, useClass: AuthServiceStub }]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

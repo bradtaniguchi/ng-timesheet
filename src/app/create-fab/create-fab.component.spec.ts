@@ -10,16 +10,10 @@ describe('CreateFabComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateFabComponent ],
-      imports: [
-        MatButtonModule,
-        MatIconModule
-      ],
-      providers: [
-        CreateFabService
-      ]
-    })
-    .compileComponents();
+      declarations: [CreateFabComponent],
+      imports: [MatButtonModule, MatIconModule],
+      providers: [CreateFabService]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

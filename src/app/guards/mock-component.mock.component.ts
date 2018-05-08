@@ -4,5 +4,5 @@ import { Component } from '@angular/core';
   template: 'Hello World!'
 })
 export class MockComponent {
-  constructor() { }
+  constructor() {}
 }

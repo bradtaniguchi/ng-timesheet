@@ -22,7 +22,7 @@ export class LocalSettingsService {
   };
   // an observable we can subscribe to outside of this service, any time the localSettings are changed.
   private readonly _config = new Subject<LocalSettings>();
-  constructor() { }
+  constructor() {}
   /**
    * isSupported returns if
    */
@@ -77,5 +77,4 @@ export class LocalSettingsService {
     config.timeFormat = format;
     this.setConfig(config);
   }
-
 }

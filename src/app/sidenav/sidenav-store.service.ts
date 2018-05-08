@@ -6,11 +6,10 @@ import { scan } from 'rxjs/operators';
 export class SidenavStoreService {
   private _sidenavShown = new Subject<boolean>();
   private _sidenavState = false;
-  constructor() { }
+  constructor() {}
 
   get sidenavShown(): Observable<boolean> {
-    return this._sidenavShown
-    .asObservable();
+    return this._sidenavShown.asObservable();
   }
 
   /**
@@ -26,5 +25,4 @@ export class SidenavStoreService {
   public toggle(): void {
     this._sidenavShown.next(!this._sidenavState);
   }
-
 }

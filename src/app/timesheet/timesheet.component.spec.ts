@@ -26,7 +26,6 @@ describe('TimesheetComponent', () => {
   let fixture: ComponentFixture<TimesheetComponent>;
 
   beforeEach(async(() => {
-
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule.withRoutes([]),
@@ -41,13 +40,12 @@ describe('TimesheetComponent', () => {
         MatIconModule,
         MatListModule
       ],
-      declarations: [ TimesheetComponent ],
+      declarations: [TimesheetComponent],
       providers: [
-        { provide: AuthService, useClass: AuthServiceStub},
-        {provide: TimesheetService, useClass: TimeSheetServiceStub}
+        { provide: AuthService, useClass: AuthServiceStub },
+        { provide: TimesheetService, useClass: TimeSheetServiceStub }
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -13,7 +13,7 @@ export class DisplayColumnService {
     'startTime',
     'endTime',
     // 'project',
-    'createdBy',
+    'createdBy'
   ];
   private computerDisplayColumns = [
     'date',
@@ -23,25 +23,24 @@ export class DisplayColumnService {
     'createdBy'
     // TODO: add more attributes
   ];
-  private _displayColumns = new BehaviorSubject<Array<string>>(this.computerDisplayColumns);
+  private _displayColumns = new BehaviorSubject<Array<string>>(
+    this.computerDisplayColumns
+  );
   private update = new Subject();
-  constructor(
-    private media: ObservableMedia,
-  ) {
-      media.asObservable()
-      .subscribe((change: MediaChange) => {
-        // console.log('changes', change.mqAlias);
-        switch (change.mqAlias) {
-          case 'xs':
-          case 'sm':
-            this._displayColumns.next(this.mobileDisplayColumns);
-            break;
-          case 'md':
-          case 'lg':
-          case 'xl':
-          default:
-            this._displayColumns.next(this.computerDisplayColumns);
-        }
+  constructor(private media: ObservableMedia) {
+    media.asObservable().subscribe((change: MediaChange) => {
+      // console.log('changes', change.mqAlias);
+      switch (change.mqAlias) {
+        case 'xs':
+        case 'sm':
+          this._displayColumns.next(this.mobileDisplayColumns);
+          break;
+        case 'md':
+        case 'lg':
+        case 'xl':
+        default:
+          this._displayColumns.next(this.computerDisplayColumns);
+      }
     });
   }
   private validCol(col: string): boolean {
@@ -90,5 +89,4 @@ export class DisplayColumnService {
         : 'N/A'
       : '';
   }
-
 }

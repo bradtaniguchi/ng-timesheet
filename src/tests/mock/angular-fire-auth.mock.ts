@@ -4,7 +4,7 @@ export class AngularFireAuthMock {
   user: Observable<User>;
   constructor() {
     this.user = Observable.of(<any>{
-      uid: 'someId',
+      uid: 'someId'
     });
   }
 

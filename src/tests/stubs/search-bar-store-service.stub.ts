@@ -1,3 +1,3 @@
 export class SearchBarStoreServiceStub {
-  constructor() { }
+  constructor() {}
 }

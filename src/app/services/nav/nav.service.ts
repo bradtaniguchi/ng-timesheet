@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
  * NavService provides public functions for all routes within the application.
  */
 export class NavService {
-
   constructor() {
     console.log('navService class created');
   }

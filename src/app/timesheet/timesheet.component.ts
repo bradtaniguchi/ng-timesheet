@@ -13,9 +13,7 @@ import { DocumentReference } from '@firebase/firestore-types';
 @Component({
   selector: 'app-timesheet',
   templateUrl: './timesheet.component.html',
-  styles: [
-    ':host { height: 100%; overflow: auto;}'
-  ]
+  styles: [':host { height: 100%; overflow: auto;}']
 })
 export class TimesheetComponent implements OnInit, OnDestroy {
   @ViewChild('form') form: NgForm;
@@ -28,7 +26,7 @@ export class TimesheetComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     console.log('in timesheet', this.form);
@@ -59,16 +57,20 @@ export class TimesheetComponent implements OnInit, OnDestroy {
    * @memberof TimesheetComponent
    */
   createTimesheet() {
-    this.timesheetService.create(this.form.value)
-    .pipe(take(1))
-    .pipe(takeUntil(this.takeUntil))
-    .subscribe(() => {
-      console.log('updated successfully');
-      // TODO: show toast we created successfully!
-      this.router.navigate(['/sheets']);
-    }, (err) => {
-      console.error(err);
-    });
+    this.timesheetService
+      .create(this.form.value)
+      .pipe(take(1))
+      .pipe(takeUntil(this.takeUntil))
+      .subscribe(
+        () => {
+          console.log('updated successfully');
+          // TODO: show toast we created successfully!
+          this.router.navigate(['/sheets']);
+        },
+        err => {
+          console.error(err);
+        }
+      );
   }
   /**
    * Updates the current timesheet.
@@ -76,15 +78,19 @@ export class TimesheetComponent implements OnInit, OnDestroy {
    * @memberof TimesheetComponent
    */
   updateTimesheet() {
-    this.timesheetService.update(this.form.value)
-    .pipe(take(1))
-    .pipe(takeUntil(this.takeUntil))
-    .subscribe(() => {
-      console.log('returned after update');
-      this.router.navigate(['/sheets']);
-    }, (err) => {
-      console.error(err);
-    });
+    this.timesheetService
+      .update(this.form.value)
+      .pipe(take(1))
+      .pipe(takeUntil(this.takeUntil))
+      .subscribe(
+        () => {
+          console.log('returned after update');
+          this.router.navigate(['/sheets']);
+        },
+        err => {
+          console.error(err);
+        }
+      );
   }
   /**
    * Utility function that sets the timesheets date to today
@@ -105,6 +111,6 @@ export class TimesheetComponent implements OnInit, OnDestroy {
     console.log('test clicked on preview');
   }
   cancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

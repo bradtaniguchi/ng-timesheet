@@ -22,12 +22,8 @@ export function toCommonDate(date: Date): string {
  * @param {string} num the number as a string.
  */
 export function padSingleDigits(num: string | number): string {
-  const rawNum = typeof num === 'string'
-    ? Number(num)
-    : num;
-  return rawNum < 10
-    ? '0' + rawNum
-    : '' + rawNum;
+  const rawNum = typeof num === 'string' ? Number(num) : num;
+  return rawNum < 10 ? '0' + rawNum : '' + rawNum;
 }
 /**
  * isCommonDate returns if the given date is in the common date format.

@@ -10,13 +10,11 @@ import { User } from '../interfaces/user';
 })
 export class LandingComponent implements OnInit {
   user: Observable<User>;
-  constructor(
-    private authService: AuthService
-  ) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.user = this.authService.user
-    .do((user) => console.log('TEST IN LANDING:', user));
+    this.user = this.authService.user.do(user =>
+      console.log('TEST IN LANDING:', user)
+    );
   }
-
 }

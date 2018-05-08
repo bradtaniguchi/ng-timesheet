@@ -27,11 +27,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatListModule
   ],
-  exports: [
-    TimesheetComponent
-  ],
-  declarations: [
-    TimesheetComponent
-  ]
+  exports: [TimesheetComponent],
+  declarations: [TimesheetComponent]
 })
-export class TimesheetModule { }
+export class TimesheetModule {}
