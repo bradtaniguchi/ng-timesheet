@@ -12,7 +12,9 @@
       "node ./scripts/lighthouse.js > lighthouse-report.html && npm run view:lighthouse",
     "view:lighthouse": "node ./scripts/view-report.js",
     "test": "ng test --sourcemap=false",
-    "test:ci": "ng test --single-run --no-progress --browsers headless_chrome",
+    "test:ci":
+      "ng test --single-run --no-progress --browsers headless_chrome --code-coverage",
+    "view:coverage": "node ./scripts/view-coverage.js",
     "lint": "ng lint",
     "lint:p": "npx prettier --write 'src/**/*.ts'",
     "e2e": "ng e2e",
