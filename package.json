@@ -18,7 +18,8 @@
     "deploy": "npm run build && firebase deploy",
     "config": "ts-node ./scripts/set-env.ts",
     "config:dev": "npm run config -- --environment=dev --hmr=true",
-    "config:prod": "npm run config -- --environment=prod"
+    "config:prod": "npm run config -- --environment=prod",
+    "precommit": "pretty-quick --staged"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +53,7 @@
     "chrome-launcher": "^0.10.2",
     "codelyzer": "^4.0.1",
     "dotenv": "^5.0.0",
+    "husky": "^0.14.3",
     "jasmine-core": "^2.99.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
@@ -62,6 +64,8 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "lighthouse": "^2.9.4",
     "live-server": "^1.2.0",
+    "prettier": "1.12.1",
+    "pretty-quick": "^1.4.1",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",

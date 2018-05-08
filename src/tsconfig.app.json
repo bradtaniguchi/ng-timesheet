@@ -6,9 +6,5 @@
     "module": "es2015",
     "types": []
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts",
-    "**/*.mock.component.ts"
-  ]
+  "exclude": ["test.ts", "**/*.spec.ts", "**/*.mock.component.ts"]
 }
