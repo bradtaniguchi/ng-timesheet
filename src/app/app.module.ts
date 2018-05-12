@@ -20,11 +20,9 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { ConstantsModule } from './constants/constants.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
-// rxjs prototypes
-// depricate
 
-// deprecate
-// deprecatre
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import { Page404Module } from './page-404/page-404.module';
 import {
@@ -44,6 +42,9 @@ import {
     }),
     // firebase, when ready
     AngularFireModule.initializeApp(environment.firebase),
+
+    // angulartics module
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
 
     // app modules
     ServicesModule.forRoot(),

@@ -7,7 +7,6 @@ import {
   LOGGER_LEVELS
 } from '../../interfaces/logger';
 
-console.log('WHAT IN LOGGER SERVICE');
 @Injectable({
   providedIn: 'root'
 })

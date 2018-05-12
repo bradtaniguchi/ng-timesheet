@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ServicesModule } from '../services.module';
 import { LoggerInterface } from '../../interfaces/logger';
+declare const window;
 
-console.log('WHAT IN GAPI LOGGER SERVICE');
 @Injectable({
   providedIn: 'root'
 })
 export class GapiLoggerService {
-  constructor() {}
+  constructor() {
+    console.log('test in gapi logger', window.gapi);
+  }
 }
