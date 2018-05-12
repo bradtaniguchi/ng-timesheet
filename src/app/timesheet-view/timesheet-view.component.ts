@@ -5,9 +5,8 @@ import { User } from '../interfaces/user';
 import { AuthService } from '../services/auth/auth.service';
 import { TimesheetService } from '../services/timesheet/timesheet.service';
 import { takeUntil, map, tap, switchMap } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
+import { Subject, Observable } from 'rxjs';
 import { Location } from '@angular/common';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-timesheet-view',

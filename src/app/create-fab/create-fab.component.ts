@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { CreateFabService } from './create-fab.service';
 import { takeUntil } from 'rxjs/operators';
 

@@ -21,11 +21,11 @@ import { environment } from '../environments/environment';
 import { ConstantsModule } from './constants/constants.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 // rxjs prototypes
-import 'rxjs/add/operator/do'; // depricate
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/forkJoin'; // deprecate
-import 'rxjs/add/observable/merge'; // deprecatre
-import 'rxjs/add/observable/throw';
+// depricate
+
+// deprecate
+// deprecatre
+
 import { Page404Module } from './page-404/page-404.module';
 import {
   DefaultQueryConfig,

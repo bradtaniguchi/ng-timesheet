@@ -10,11 +10,10 @@ import { TimesheetTableDataSource } from './timesheet-table-data-source';
 import { DataSource } from '@angular/cdk/table';
 import { TimesheetService } from '../../services/timesheet/timesheet.service';
 import { DisplayColumnService } from './display-column/display-column.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { takeUntil, take } from 'rxjs/operators';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Timesheet } from '../../interfaces/timesheet';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-timesheet-table',
