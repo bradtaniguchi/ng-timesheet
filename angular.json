@@ -24,7 +24,7 @@
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico", "src/manifest_sw.json"],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": ["scripts/no-console.js"]
           },
           "configurations": {
             "ci": {
@@ -103,12 +103,16 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": ["src/styles.scss"],
-            "assets": ["src/assets", "src/favicon.ico", "src/manifest_sw.json"]
+            "assets": ["src/assets", "src/favicon.ico", "src/manifest_sw.json"],
+            "scripts": ["scripts/no-console.js"]
           },
           "configurations": {
             "ci": {
               "progress": false,
-              "browsers": "headless_chrome"
+              "browsers": "headless_chrome",
+              "codeCoverage": true,
+              "watch": false,
+              "karmaConfig": "./karma-ci.conf.js"
             }
           }
         },
