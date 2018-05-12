@@ -2,9 +2,6 @@ version: 2
 machine:
   node:
     version: 8.5.0
-general:
-  artifacts:
-    - "coverage"
 jobs:
   build:
     docker:
@@ -29,6 +26,8 @@ jobs:
       - run:
           name: angular-test
           command: npm run test:ci
+      - store_artifacts:
+          path: coverage
 # deployment:
 #   production:
 #     branch: master
