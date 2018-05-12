@@ -24,7 +24,15 @@
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico", "src/manifest_sw.json"],
             "styles": ["src/styles.scss"],
-            "scripts": ["scripts/no-console.js"]
+            "scripts": ["scripts/no-console.js"],
+            "fileReplacements": [
+              {
+                "replace":
+                  "src/injection-environments/injection-environment.ts",
+                "with":
+                  "src/injection-environments/injection-environment.prod.ts"
+              }
+            ]
           },
           "configurations": {
             "ci": {

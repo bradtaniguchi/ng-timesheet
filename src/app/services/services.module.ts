@@ -9,6 +9,7 @@ import { ErrorHandlerService } from './error-handler/error-handler.service';
 import { MatDialogModule } from '@angular/material';
 import { DialogService } from './dialog/dialog.service';
 import { ToastService } from './toast/toast.service';
+import { injectionEnvironment } from '../../injection-environments/injection-environment.prod';
 @NgModule({
   imports: [
     CommonModule,
@@ -33,6 +34,11 @@ export class ServicesModule {
         {
           provide: ErrorHandler,
           useClass: ErrorHandlerService
+        },
+        // conditionally insert logger service, based on env
+        {
+          provide: 'LoggerService',
+          useClass: injectionEnvironment.logger
         }
       ]
     };
