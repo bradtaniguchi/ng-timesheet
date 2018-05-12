@@ -1,2 +1,1 @@
-describe('TimesheetTableDataSource', () => {
-});
+describe('TimesheetTableDataSource', () => {});

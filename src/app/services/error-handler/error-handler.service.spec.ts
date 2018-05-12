@@ -9,7 +9,10 @@ describe('ErrorHandlerService', () => {
     });
   });
 
-  it('should be created', inject([ErrorHandlerService], (service: ErrorHandlerService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([ErrorHandlerService], (service: ErrorHandlerService) => {
+      expect(service).toBeTruthy();
+    })
+  );
 });

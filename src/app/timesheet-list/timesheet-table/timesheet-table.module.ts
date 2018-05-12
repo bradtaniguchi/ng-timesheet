@@ -26,9 +26,6 @@ import { MatButtonModule } from '@angular/material';
   ],
   exports: [TimesheetTableComponent],
   declarations: [TimesheetTableComponent],
-  providers: [
-    DisplayColumnService,
-    PaginationService
-  ]
+  providers: [DisplayColumnService, PaginationService]
 })
-export class TimesheetTableModule { }
+export class TimesheetTableModule {}

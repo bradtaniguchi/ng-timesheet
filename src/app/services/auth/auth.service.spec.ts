@@ -11,13 +11,16 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({
       providers: [
         AuthService,
-        { provide: AngularFirestore, useClass: AngularFirestoreMock},
+        { provide: AngularFirestore, useClass: AngularFirestoreMock },
         { provide: AngularFireAuth, useClass: AngularFireAuthMock }
       ]
     });
   });
 
-  it('should be created', inject([AuthService], (service: AuthService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([AuthService], (service: AuthService) => {
+      expect(service).toBeTruthy();
+    })
+  );
 });

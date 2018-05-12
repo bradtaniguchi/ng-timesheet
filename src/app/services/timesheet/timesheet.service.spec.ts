@@ -7,7 +7,10 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../auth/auth.service';
 import { AuthServiceStub } from '../../../tests/stubs/auth-service.stub';
-import { DEFAULT_QUERY_CONFIG, DefaultQueryConfig } from '../../constants/default-query-config';
+import {
+  DEFAULT_QUERY_CONFIG,
+  DefaultQueryConfig
+} from '../../constants/default-query-config';
 
 describe('TimesheetService', () => {
   beforeEach(() => {
@@ -16,14 +19,16 @@ describe('TimesheetService', () => {
         TimesheetService,
         { provide: AuthService, useClass: AuthServiceStub },
         { provide: AngularFirestore, useClass: AngularFirestoreMock },
-        { provide: DEFAULT_QUERY_CONFIG, useValue: DefaultQueryConfig },
-      ],
+        { provide: DEFAULT_QUERY_CONFIG, useValue: DefaultQueryConfig }
+      ]
     });
   });
 
-  it('should be created', inject([TimesheetService], (service: TimesheetService) => {
-    console.log('TEST: ', service);
-    expect(service).toBeTruthy();
-  }));
-
+  it(
+    'should be created',
+    inject([TimesheetService], (service: TimesheetService) => {
+      console.log('TEST: ', service);
+      expect(service).toBeTruthy();
+    })
+  );
 });

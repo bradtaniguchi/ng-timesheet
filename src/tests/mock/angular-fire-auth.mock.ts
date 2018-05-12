@@ -1,10 +1,10 @@
-import { Observable } from 'rxjs/Observable';
+import { of as observableOf, Observable } from 'rxjs';
 import { User } from '../../app/interfaces/user';
 export class AngularFireAuthMock {
   user: Observable<User>;
   constructor() {
-    this.user = Observable.of(<any>{
-      uid: 'someId',
+    this.user = observableOf(<any>{
+      uid: 'someId'
     });
   }
 

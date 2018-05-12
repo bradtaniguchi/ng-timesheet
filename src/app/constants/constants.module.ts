@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DefaultQueryConfig, DEFAULT_QUERY_CONFIG } from './default-query-config';
+import {
+  DefaultQueryConfig,
+  DEFAULT_QUERY_CONFIG
+} from './default-query-config';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [],
   providers: [
     {
@@ -14,4 +15,4 @@ import { DefaultQueryConfig, DEFAULT_QUERY_CONFIG } from './default-query-config
     }
   ]
 })
-export class ConstantsModule { }
+export class ConstantsModule {}

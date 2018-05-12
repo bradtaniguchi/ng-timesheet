@@ -1,10 +1,10 @@
 export class AngularFirestoreMock {
   _mockCollections = {
-    'timesheets': []
+    timesheets: []
   };
-  constructor() { }
+  constructor() {}
 
   collection<T>(collection: string): any {
-    return  this._mockCollections;
+    return this._mockCollections;
   }
 }

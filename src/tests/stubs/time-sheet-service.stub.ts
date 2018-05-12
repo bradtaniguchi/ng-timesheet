@@ -1,7 +1,7 @@
+import { of as observableOf, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { TimesheetService } from '../../app/services/timesheet/timesheet.service';
 import { Timesheet } from '../../app/interfaces/timesheet';
-import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class TimeSheetServiceStub {
   constructor() {}
@@ -10,18 +10,18 @@ export class TimeSheetServiceStub {
   }
 
   get(): Observable<Array<Timesheet>> {
-    return Observable.of([]);
+    return observableOf([]);
   }
   create() {
-    return Observable.of({});
+    return observableOf({});
   }
   update() {
-    return Observable.of({});
+    return observableOf({});
   }
   remove() {
-    return Observable.of({});
+    return observableOf({});
   }
   getOne() {
-    return Observable.of({});
+    return observableOf({});
   }
 }

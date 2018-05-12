@@ -1,9 +1,7 @@
 import { Injectable, ChangeDetectorRef } from '@angular/core';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { shareReplay, startWith } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Timesheet } from '../../../interfaces/timesheet';
 import { PersonTag } from '../../../interfaces/person-tag';
 @Injectable()
@@ -13,7 +11,7 @@ export class DisplayColumnService {
     'startTime',
     'endTime',
     // 'project',
-    'createdBy',
+    'createdBy'
   ];
   private computerDisplayColumns = [
     'date',
@@ -23,25 +21,24 @@ export class DisplayColumnService {
     'createdBy'
     // TODO: add more attributes
   ];
-  private _displayColumns = new BehaviorSubject<Array<string>>(this.computerDisplayColumns);
+  private _displayColumns = new BehaviorSubject<Array<string>>(
+    this.computerDisplayColumns
+  );
   private update = new Subject();
-  constructor(
-    private media: ObservableMedia,
-  ) {
-      media.asObservable()
-      .subscribe((change: MediaChange) => {
-        // console.log('changes', change.mqAlias);
-        switch (change.mqAlias) {
-          case 'xs':
-          case 'sm':
-            this._displayColumns.next(this.mobileDisplayColumns);
-            break;
-          case 'md':
-          case 'lg':
-          case 'xl':
-          default:
-            this._displayColumns.next(this.computerDisplayColumns);
-        }
+  constructor(private media: ObservableMedia) {
+    media.asObservable().subscribe((change: MediaChange) => {
+      // console.log('changes', change.mqAlias);
+      switch (change.mqAlias) {
+        case 'xs':
+        case 'sm':
+          this._displayColumns.next(this.mobileDisplayColumns);
+          break;
+        case 'md':
+        case 'lg':
+        case 'xl':
+        default:
+          this._displayColumns.next(this.computerDisplayColumns);
+      }
     });
   }
   private validCol(col: string): boolean {
@@ -90,5 +87,4 @@ export class DisplayColumnService {
         : 'N/A'
       : '';
   }
-
 }

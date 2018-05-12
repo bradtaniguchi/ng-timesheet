@@ -11,16 +11,12 @@ describe('SearchbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchbarComponent ],
-      imports: [
-        MatIconModule,
-        MatButtonModule
-      ],
+      declarations: [SearchbarComponent],
+      imports: [MatIconModule, MatButtonModule],
       providers: [
         { provide: SearchBarStoreService, useClass: SearchBarStoreServiceStub }
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

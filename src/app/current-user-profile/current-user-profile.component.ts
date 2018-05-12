@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { User } from '../interfaces/user';
 import { AuthService } from '../services/auth/auth.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-current-user-profile',
@@ -11,12 +11,9 @@ import { Observable } from 'rxjs/Observable';
 export class CurrentUserProfileComponent implements OnInit {
   @Output() click = new EventEmitter();
   user: Observable<User>;
-  constructor(
-    private authService: AuthService
-  ) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.user = this.authService.user;
   }
-
 }

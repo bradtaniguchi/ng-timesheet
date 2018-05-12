@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject } from 'rxjs';
 import { scan } from 'rxjs/operators';
 @Injectable()
 export class SidenavStoreService {
   private _sidenavShown = new Subject<boolean>();
   private _sidenavState = false;
-  constructor() { }
+  constructor() {}
 
   get sidenavShown(): Observable<boolean> {
-    return this._sidenavShown
-    .asObservable();
+    return this._sidenavShown.asObservable();
   }
 
   /**
@@ -26,5 +24,4 @@ export class SidenavStoreService {
   public toggle(): void {
     this._sidenavShown.next(!this._sidenavState);
   }
-
 }

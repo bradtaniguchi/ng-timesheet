@@ -9,23 +9,22 @@ import { NavService } from '../services/nav/nav.service';
   styles: []
 })
 export class LoginComponent implements OnInit {
-
   constructor(
     private authService: AuthService,
     private router: Router,
     private navService: NavService
-  ) { }
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   login() {
-    this.authService.authLoginPopup()
-    // this.authService.authLoginRedirect()
-    .then(() => {
-      this.router.navigateByUrl(this.navService.root());
-    }).catch((err) => {
-      console.error(err);
-    });
+    this.authService
+      .authLoginPopup()
+      // this.authService.authLoginRedirect()
+      .then(() => {
+        this.router.navigateByUrl(this.navService.root());
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
-
 }

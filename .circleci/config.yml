@@ -1,11 +1,11 @@
 version: 2
 machine:
-  node: 
+  node:
     version: 8.5.0
 jobs:
   build:
     docker:
-      - 
+      -
     working_directory: ~/ng-timesheet
     docker:
       - image: circleci/node:8-browsers
@@ -26,13 +26,15 @@ jobs:
       - run:
           name: angular-test
           command: npm run test:ci
+      - store_artifacts:
+          path: coverage
 # deployment:
-#   production: 
+#   production:
 #     branch: master
-#     commands: 
+#     commands:
 #       - npm run build:ci
 #       - npm run deploy
-#   staging: 
+#   staging:
 #     branch: staging
-#     commands: 
+#     commands:
 #       - npm run deploy:staging

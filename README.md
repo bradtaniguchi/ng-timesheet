@@ -1,5 +1,9 @@
 # NgTimesheet
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+[![CircleCI](https://circleci.com/bb/bradtaniguchi/ng-timesheet.svg?style=svg)](https://circleci.com/bb/bradtaniguchi/ng-timesheet)
+
 ## Description
 
 NgTimesheet is an angular firebase project that allows teams of users to keep track of their "timesheets" or timepunches for projects using a realtime database, progressive web app features such as offline data, material design, and responsive UI.

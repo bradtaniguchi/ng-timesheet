@@ -13,8 +13,8 @@ import { MatButtonModule } from '@angular/material';
 
     // angular modules
     FlexLayoutModule,
-    MatButtonModule,
+    MatButtonModule
   ],
   declarations: [LoginComponent]
 })
-export class LoginModule { }
+export class LoginModule {}

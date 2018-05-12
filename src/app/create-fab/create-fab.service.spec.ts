@@ -9,7 +9,10 @@ describe('CreateFabService', () => {
     });
   });
 
-  it('should be created', inject([CreateFabService], (service: CreateFabService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([CreateFabService], (service: CreateFabService) => {
+      expect(service).toBeTruthy();
+    })
+  );
 });

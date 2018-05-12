@@ -9,7 +9,10 @@ describe('SearchbarStoreService', () => {
     });
   });
 
-  it('should be created', inject([SearchBarStoreService], (service: SearchBarStoreService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([SearchBarStoreService], (service: SearchBarStoreService) => {
+      expect(service).toBeTruthy();
+    })
+  );
 });

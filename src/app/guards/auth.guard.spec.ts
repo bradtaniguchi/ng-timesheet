@@ -10,9 +10,7 @@ import { MockComponent } from './mock-component.mock.component';
 describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        MockComponent
-      ],
+      declarations: [MockComponent],
       imports: [
         RouterTestingModule.withRoutes([
           {
@@ -23,36 +21,45 @@ describe('AuthGuard', () => {
       ],
       providers: [
         AuthGuard,
-        {provide: AuthService, useClass: AuthServiceStub}
+        { provide: AuthService, useClass: AuthServiceStub }
       ]
     });
   });
 
-  it('should exist', inject([AuthGuard], (guard: AuthGuard) => {
-    expect(guard).toBeTruthy();
-  }));
+  it(
+    'should exist',
+    inject([AuthGuard], (guard: AuthGuard) => {
+      expect(guard).toBeTruthy();
+    })
+  );
 
-  it('if the user does exist, return true', async(inject([AuthGuard], (guard: AuthGuard) => {
-    const service = <AuthService>TestBed.get(AuthService);
-    // const obs = Observable.of();
-    const obs = Observable.of({
-      name: 'Test User'
-    });
-    // since this is a "getter" from typescript, we use spyOnProperty
-    spyOnProperty(service, 'user', 'get').and.returnValue(obs);
-    (<Observable<boolean>>guard.canActivate(null, null))
-    .subscribe((canActivate) => {
-      expect(canActivate).toBeTruthy();
-    });
-  })));
+  it('if the user does exist, return true', async(
+    inject([AuthGuard], (guard: AuthGuard) => {
+      const service = <AuthService>TestBed.get(AuthService);
+      // const obs = Observable.of();
+      const obs = Observable.of({
+        name: 'Test User'
+      });
+      // since this is a "getter" from typescript, we use spyOnProperty
+      spyOnProperty(service, 'user', 'get').and.returnValue(obs);
+      (<Observable<boolean>>guard.canActivate(null, null)).subscribe(
+        canActivate => {
+          expect(canActivate).toBeTruthy();
+        }
+      );
+    })
+  ));
 
-  it('if the user does not exist, return false', async(inject([AuthGuard], (guard: AuthGuard) => {
-    const service = <AuthService>TestBed.get(AuthService);
-    const obs = Observable.of();
-    spyOnProperty(service, 'user', 'get').and.returnValue(obs);
-    (<Observable<boolean>>guard.canActivate(null, null))
-    .subscribe((canActivate) => {
-      expect(canActivate).toBeFalsy();
-    });
-  })));
+  it('if the user does not exist, return false', async(
+    inject([AuthGuard], (guard: AuthGuard) => {
+      const service = <AuthService>TestBed.get(AuthService);
+      const obs = Observable.of();
+      spyOnProperty(service, 'user', 'get').and.returnValue(obs);
+      (<Observable<boolean>>guard.canActivate(null, null)).subscribe(
+        canActivate => {
+          expect(canActivate).toBeFalsy();
+        }
+      );
+    })
+  ));
 });

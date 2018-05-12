@@ -1,7 +1,7 @@
-import { Observable } from 'rxjs/Observable';
+import { of as observableOf, Observable } from 'rxjs';
 export class SearchBarStoreServiceStub {
-  constructor() { }
+  constructor() {}
   isSearchShown() {
-    return Observable.of(true);
+    return observableOf(true);
   }
 }
