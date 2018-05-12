@@ -1,16 +1,22 @@
+import {
+  from as observableFrom,
+  throwError as observableThrowError,
+  Observable
+} from 'rxjs';
+
+import { switchMap } from 'rxjs/operators';
 import { Injectable, Inject } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection
 } from 'angularfire2/firestore';
 import { User } from '../../interfaces/user';
-import { Observable } from 'rxjs/Observable';
 import { Timesheet } from '../../interfaces/timesheet';
-import {
-  DocumentReference,
-  CollectionReference,
-  Query
-} from '@firebase/firestore-types';
+// import {
+//   DocumentReference,
+//   CollectionReference,
+//   Query
+// } from '@firebase/firestore-types';
 import { AuthService } from '../auth/auth.service';
 import { toCommonDate } from '../../common/to-common-date';
 import { getTimeFromDate } from '../../common/get-time-from-date';
@@ -40,7 +46,7 @@ export class TimesheetService {
    * @param queryConfig the query we will make, this should be build from some of
    * the searchParams and the user's information.
    */
-  private buildQuery(queryConfig: QueryConfig): Query {
+  private buildQuery(queryConfig: QueryConfig): any {
     // only get our timesheets
     return queryConfig.ref
       .where('createdBy.uid', '==', queryConfig.user.uid)
@@ -74,21 +80,24 @@ export class TimesheetService {
     update?: boolean
   ): Observable<Array<Timesheet>> {
     if (!this.timesheets || update) {
-      this.timesheets = this.authService.user.switchMap(user => {
-        console.log('test in switchMap: ', searchParams);
-        return this.fireDb
-          .collection<Timesheet>('timesheets', ref =>
-            this.buildQuery({
-              ref,
-              user,
-              orderBy: searchParams.orderBy || this.defaultQueryConfig.orderBy,
-              startAfter:
-                searchParams.startAfter || this.defaultQueryConfig.startAfter,
-              limit: searchParams.limit || this.defaultQueryConfig.limit
-            })
-          )
-          .valueChanges();
-      });
+      this.timesheets = this.authService.user.pipe(
+        switchMap(user => {
+          console.log('test in switchMap: ', searchParams);
+          return this.fireDb
+            .collection<Timesheet>('timesheets', ref =>
+              this.buildQuery({
+                ref,
+                user,
+                orderBy:
+                  searchParams.orderBy || this.defaultQueryConfig.orderBy,
+                startAfter:
+                  searchParams.startAfter || this.defaultQueryConfig.startAfter,
+                limit: searchParams.limit || this.defaultQueryConfig.limit
+              })
+            )
+            .valueChanges();
+        })
+      );
     }
     return this.timesheets;
   }
@@ -100,7 +109,7 @@ export class TimesheetService {
           .collection<Timesheet>('timesheets')
           .doc(id)
           .valueChanges()
-      : Observable.throw(new Error('No id defined'));
+      : observableThrowError(new Error('No id defined'));
   }
 
   /**
@@ -110,19 +119,21 @@ export class TimesheetService {
    * TODO: add the project information argument.
    */
   create(sheet: Timesheet): Observable<void> {
-    return this.authService.user.switchMap(user => {
-      sheet.id = this.fireDb.createId();
-      sheet.createdBy = {
-        name: user.displayName,
-        email: user.email,
-        uid: user.uid
-      };
-      sheet.updatedOn = new Date().getTime();
-      sheet.createdOn = new Date().getTime();
-      return this.timesheetCollection.doc(sheet.id).set(sheet, {
-        merge: true
-      });
-    });
+    return this.authService.user.pipe(
+      switchMap(user => {
+        sheet.id = this.fireDb.createId();
+        sheet.createdBy = {
+          name: user.displayName,
+          email: user.email,
+          uid: user.uid
+        };
+        sheet.updatedOn = new Date().getTime();
+        sheet.createdOn = new Date().getTime();
+        return this.timesheetCollection.doc(sheet.id).set(sheet, {
+          merge: true
+        });
+      })
+    );
   }
 
   /**
@@ -132,11 +143,11 @@ export class TimesheetService {
   update(sheet: Timesheet): Observable<void> {
     if (sheet.id) {
       sheet.updatedOn = new Date().getTime();
-      return Observable.fromPromise(
+      return observableFrom(
         this.timesheetCollection.doc(sheet.id).update(sheet)
       );
     }
-    return Observable.throw(new Error(this.noIdMessage));
+    return observableThrowError(new Error(this.noIdMessage));
   }
 
   /**
@@ -145,10 +156,8 @@ export class TimesheetService {
    */
   remove(sheet: Timesheet): Observable<void> {
     if (sheet.id) {
-      return Observable.fromPromise(
-        this.timesheetCollection.doc(sheet.id).delete()
-      );
+      return observableFrom(this.timesheetCollection.doc(sheet.id).delete());
     }
-    return Observable.throw(new Error(this.noIdMessage));
+    return observableThrowError(new Error(this.noIdMessage));
   }
 }

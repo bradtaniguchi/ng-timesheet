@@ -1,9 +1,9 @@
+import { tap } from 'rxjs/operators';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { SidenavStoreService } from './sidenav/sidenav-store.service';
 
 // global rxjs observables
-import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     );
 
     this.sidenav.openedChange
-      .do(state => this.sidenavStore.setSidenav(state))
+      .pipe(tap(state => this.sidenavStore.setSidenav(state)))
       .subscribe(state => (this.sidenavOpened = state));
   }
 }

@@ -1,9 +1,7 @@
 import { Injectable, ChangeDetectorRef } from '@angular/core';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { shareReplay, startWith } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Timesheet } from '../../../interfaces/timesheet';
 import { PersonTag } from '../../../interfaces/person-tag';
 @Injectable()

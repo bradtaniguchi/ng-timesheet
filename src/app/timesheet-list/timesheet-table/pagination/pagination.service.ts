@@ -1,11 +1,10 @@
+import { tap, scan, take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection
 } from 'angularfire2/firestore';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { scan, take } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 // import 'rxjs/add/operator/do';
 // import 'rxjs/add/operator/scan';
 // import 'rxjs/add/operator/take';
@@ -50,9 +49,11 @@ export class PaginationService {
     this.mapAndUpdate(first);
 
     // Create the observable array for consumption in components
-    this.data = this._data.asObservable().scan((acc, val) => {
-      return this.query.prepend ? val.concat(acc) : acc.concat(val);
-    });
+    this.data = this._data.asObservable().pipe(
+      scan((acc, val) => {
+        return this.query.prepend ? val.concat(acc) : acc.concat(val);
+      })
+    );
   }
 
   // Retrieves additional data from firestore
@@ -92,25 +93,27 @@ export class PaginationService {
     // Map snapshot with doc ref (needed for cursor)
     return col
       .snapshotChanges()
-      .do(arr => {
-        let values = arr.map(snap => {
-          const data = snap.payload.doc.data();
-          const doc = snap.payload.doc;
-          return { ...data, doc };
-        });
+      .pipe(
+        tap(arr => {
+          let values = arr.map(snap => {
+            const data = snap.payload.doc.data();
+            const doc = snap.payload.doc;
+            return { ...data, doc };
+          });
 
-        // If prepending, reverse the batch order
-        values = this.query.prepend ? values.reverse() : values;
+          // If prepending, reverse the batch order
+          values = this.query.prepend ? values.reverse() : values;
 
-        // update source with new values, done loading
-        this._data.next(values);
-        // this._loading.next(false);
+          // update source with new values, done loading
+          this._data.next(values);
+          // this._loading.next(false);
 
-        // no more values, mark done
-        if (!values.length) {
-          this._done.next(true);
-        }
-      })
+          // no more values, mark done
+          if (!values.length) {
+            this._done.next(true);
+          }
+        })
+      )
       .pipe(take(1))
       .subscribe();
   }

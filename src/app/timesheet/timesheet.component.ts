@@ -4,9 +4,8 @@ import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Timesheet } from '../interfaces/timesheet';
 import { AuthService } from '../services/auth/auth.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subject } from 'rxjs';
 import { User } from '../interfaces/user';
-import { Subject } from 'rxjs/Subject';
 import { takeUntil, take } from 'rxjs/operators';
 import { DocumentReference } from '@firebase/firestore-types';
 

@@ -1,11 +1,13 @@
+import { of as observableOf, Observable } from 'rxjs';
+
+import { share, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from 'rxjs/Observable';
 import { OAuthProvider } from '@firebase/auth-types';
 import * as firebase from 'firebase/app';
 import { User } from '../../interfaces/user';
-import 'rxjs/add/operator/do';
+
 @Injectable()
 export class AuthService {
   private currentUser: Observable<User>;
@@ -14,21 +16,23 @@ export class AuthService {
     private fireAuth: AngularFireAuth
   ) {
     console.log('starting in auth');
-    this.currentUser = this.fireAuth.authState.switchMap(user => {
-      if (user) {
-        return this.fireDb.doc<User>(`users/${user.uid}`).valueChanges();
-      } else {
-        return Observable.of(null);
-      }
-    });
+    this.currentUser = this.fireAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.fireDb.doc<User>(`users/${user.uid}`).valueChanges();
+        } else {
+          return observableOf(null);
+        }
+      })
+    );
     // .do((user) => console.log('>>> auth:', user));
   }
 
   get user(): Observable<User> {
-    return this.currentUser.share();
+    return this.currentUser.pipe(share());
   }
   getUser(): Observable<User> {
-    return this.currentUser.share();
+    return this.currentUser.pipe(share());
   }
   /**
    * Opens the sign in with popup dialog

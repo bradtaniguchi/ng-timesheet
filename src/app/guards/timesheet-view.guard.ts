@@ -1,3 +1,4 @@
+import { merge as observableMerge, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -5,7 +6,6 @@ import {
   RouterStateSnapshot,
   ActivatedRoute
 } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { TimesheetService } from '../services/timesheet/timesheet.service';
 import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/auth/auth.service';
@@ -24,7 +24,7 @@ export class TimesheetViewGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
     const id = next.params['id'];
     console.log('test with', id);
-    return Observable.merge(
+    return observableMerge(
       this.timesheetService.getOne(id),
       this.authService.getUser()
     ).pipe(
