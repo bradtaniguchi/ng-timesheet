@@ -2,7 +2,7 @@ import { tap } from 'rxjs/operators';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { SidenavStoreService } from './sidenav/sidenav-store.service';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga/ga';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 // global rxjs observables
 
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
   constructor(
     private sidenavStore: SidenavStoreService,
-    angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics
+    private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics
   ) {}
 
   ngOnInit() {
@@ -27,5 +27,7 @@ export class AppComponent implements OnInit {
     this.sidenav.openedChange
       .pipe(tap(state => this.sidenavStore.setSidenav(state)))
       .subscribe(state => (this.sidenavOpened = state));
+
+    this.angulartics2GoogleAnalytics.eventTrack('TEST', 'this is a test');
   }
 }
